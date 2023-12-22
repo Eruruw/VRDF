@@ -4,6 +4,28 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Spencer Test.unity
+    guid: a88ebdf6ebd05694c891bcc00c0fc8a1
+  - enabled: 1
+    path: Assets/Scenes/Peyton Test.unity
+    guid: c51365ba6272f024ea17fe985e910a5d
+  - enabled: 1
+    path: Assets/Scenes/Noah Test.unity
+    guid: 2dd4cef61dada744d91263cefa89b45a
+  - enabled: 1
+    path: Assets/Scenes/Jayden Test.unity
+    guid: 71a9141bf73cefb4ab39ea441cf494c0
+  - enabled: 1
+    path: Assets/Scenes/Office.unity
+    guid: a92c3f8e7d2bbdd479e69ec891b6e96b
+  - enabled: 1
+    path: Assets/Scenes/Traffic Collision.unity
+    guid: e66eda76cd47245448e49f862effaf38
+  - enabled: 1
+    path: Assets/Scenes/Main Scene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0ccd42e1666996a4db14ebf8b3389b3b, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: a65a408200522d34bb2fa83efdf9cf27, type: 2}
