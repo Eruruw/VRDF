@@ -370,6 +370,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
+"Assets/Scripts/ActivateTeleportationRay.cs"
 "Assets/Scripts/FireBulletOnAction.cs"
 "Assets/Scripts/Player/AnimateHandOnInput.cs"
 "Assets/Scripts/Player/Hand.cs"
