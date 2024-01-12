@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Jayden Test.unity
     guid: 71a9141bf73cefb4ab39ea441cf494c0
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: ac5c10bce93818d43b6f9eae1040e433
+  - enabled: 1
     path: Assets/Scenes/Office.unity
     guid: a92c3f8e7d2bbdd479e69ec891b6e96b
   - enabled: 1

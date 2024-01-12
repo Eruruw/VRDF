@@ -14,4 +14,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("Traffic Collision");
     }
+
+    public void MainMenuScene()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
