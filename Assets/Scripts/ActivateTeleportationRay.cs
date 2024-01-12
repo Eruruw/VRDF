@@ -16,10 +16,24 @@ public class ActivateTeleportationRay : MonoBehaviour
 
     public XRRayInteractor rightRay;
     public XRRayInteractor leftRay;
+
+    public bool isEnable;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void SwitchLocomotion(int locomotionValue)
+    {
+        if (locomotionValue == 0)
+        {
+            isEnable = false;
+        }
+        else if (locomotionValue == 1)
+        {
+            isEnable = true;
+        }
     }
 
     // Update is called once per frame
@@ -29,7 +43,7 @@ public class ActivateTeleportationRay : MonoBehaviour
 
         bool isRightRayHovering = rightRay.TryGetHitInfo(out Vector3 rightPos, out Vector3 rightNormal, out int rightNumber, out bool rightVaild);
 
-        leftTeleportationRay.SetActive(!isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
-        rightTeleportationRay.SetActive(!isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
+        leftTeleportationRay.SetActive(isEnable && !isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
+        rightTeleportationRay.SetActive(isEnable && !isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
     }
 }
