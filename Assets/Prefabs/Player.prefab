@@ -159,7 +159,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: 6200231435965607117, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1624732714119936402
 GameObject:
   m_ObjectHideFlags: 0
@@ -6549,6 +6549,10 @@ PrefabInstance:
     - target: {fileID: 4641838232294906492, guid: 9cfa54144dc82384e92cd6b61451a9c8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783671643983731251, guid: 9cfa54144dc82384e92cd6b61451a9c8, type: 3}
+      propertyPath: m_ClickSpeed
+      value: 11.09
       objectReference: {fileID: 0}
     - target: {fileID: 4992898309378795820, guid: 9cfa54144dc82384e92cd6b61451a9c8, type: 3}
       propertyPath: m_Name
