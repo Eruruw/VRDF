@@ -47,6 +47,7 @@ public class BreakableWindow : MonoBehaviour {
     private GameObject splinterParent;
     int[] tris;
 
+   
     void Start()
     {
         if (preCalculate == true && allreadyCalculated == false)
@@ -128,6 +129,7 @@ public class BreakableWindow : MonoBehaviour {
         m.triangles = t;
 
         GameObject obj = new GameObject();
+        obj.transform.parent = parent.transform;
         obj.transform.position = new Vector3(vertices[tris[0]].x * transform.localScale.x + transform.position.x, vertices[tris[0]].y * transform.localScale.y + transform.position.y, transform.position.z);
         obj.transform.RotateAround(transform.position, transform.up, transform.rotation.eulerAngles.y);
         obj.transform.localScale = transform.localScale;
@@ -150,10 +152,9 @@ public class BreakableWindow : MonoBehaviour {
         mf.mesh = m;
         
         MeshCollider col = obj.AddComponent<MeshCollider>();
-        col.inflateMesh = true;
         col.convex = true;
         if (destroyPhysicsTime > 0 && destroyColliderWithPhysics) Destroy(col, destroyPhysicsTime);
-        
+
         Rigidbody rigid = obj.AddComponent<Rigidbody>();
         rigid.centerOfMass = (v[0] + v[1] + v[2]) / 3f;
         if (addTorques && preCalculate == false) rigid.AddTorque(new Vector3(Random.value > 0.5f ? Random.value * 50 : -Random.value * 50, Random.value > 0.5f ? Random.value * 50 : -Random.value * 50, Random.value > 0.5f ? Random.value * 50 : -Random.value * 50));

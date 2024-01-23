@@ -6552,7 +6552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4783671643983731251, guid: 9cfa54144dc82384e92cd6b61451a9c8, type: 3}
       propertyPath: m_ClickSpeed
-      value: 11.09
+      value: 11.56
       objectReference: {fileID: 0}
     - target: {fileID: 4992898309378795820, guid: 9cfa54144dc82384e92cd6b61451a9c8, type: 3}
       propertyPath: m_Name
