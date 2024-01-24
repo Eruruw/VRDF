@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Traffic Collision.unity
     guid: e66eda76cd47245448e49f862effaf38
   - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
+    path: Assets/Imports/Light Expert/DemoScene/Demo.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0ccd42e1666996a4db14ebf8b3389b3b, type: 2}
