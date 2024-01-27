@@ -5,14 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 public class ActivateTeleportationRay : MonoBehaviour
 {
-    public XRBaseInteractor lefthandInteractor;
-    public XRBaseInteractor righthandInteractor;
-
     public GameObject leftTeleportationRay;
     public GameObject rightTeleportationRay;
-
-    public GameObject leftUIRay;
-    public GameObject rightUIRay;
 
     public InputActionProperty leftActivate;
     public InputActionProperty rightActivate;
@@ -51,11 +45,5 @@ public class ActivateTeleportationRay : MonoBehaviour
 
         leftTeleportationRay.SetActive(isEnable && !isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
         rightTeleportationRay.SetActive(isEnable && !isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
-
-        bool isLeftHandActive = lefthandInteractor.hasSelection;
-        bool isRightHandActive = righthandInteractor.hasSelection;
-        
-        leftUIRay.SetActive(!isLeftHandActive);
-        rightUIRay.SetActive(!isRightHandActive);
     }
 }
