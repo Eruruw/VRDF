@@ -8,6 +8,12 @@ public class ActivateTeleportationRay : MonoBehaviour
     public GameObject leftTeleportationRay;
     public GameObject rightTeleportationRay;
 
+    public GameObject leftUIRay;
+    public GameObject rightUIRay;
+
+    public XRBaseInteractor lefthandInteractor;
+    public XRBaseInteractor righthandInteractor;
+
     public InputActionProperty leftActivate;
     public InputActionProperty rightActivate;
 
@@ -16,6 +22,8 @@ public class ActivateTeleportationRay : MonoBehaviour
 
     public XRRayInteractor rightRay;
     public XRRayInteractor leftRay;
+
+
 
     public bool isEnable;
     // Start is called before the first frame update
@@ -45,5 +53,11 @@ public class ActivateTeleportationRay : MonoBehaviour
 
         leftTeleportationRay.SetActive(isEnable && !isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
         rightTeleportationRay.SetActive(isEnable && !isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
+
+        bool isLeftHandActive = lefthandInteractor.hasSelection;
+        bool isRightHandActive = righthandInteractor.hasSelection;
+
+        leftUIRay.SetActive(!isLeftHandActive);
+        rightUIRay.SetActive(!isRightHandActive);
     }
 }
