@@ -29,5 +29,6 @@ public class BagSocket : MonoBehaviour
             decrement
         }
         */
+        item.SetActive(false);
     }
 }

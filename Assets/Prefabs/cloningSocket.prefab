@@ -125,6 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb135bbc1a5eca49ae05916455d418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clonePrefab: {fileID: 0}
+  clonePrefab: {fileID: 1457466533948294251, guid: c3919a1cbb570f44690b3a6b07a7816d, type: 3}
   numObjs: 0
-  socketObj: {fileID: 5923898079209886805}
