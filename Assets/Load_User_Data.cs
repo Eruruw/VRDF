@@ -13,7 +13,7 @@ public class Load_User_Data : MonoBehaviour
 
     void Start()
     {
-        PlayerListText.text = "";
+
     }
 
     // Update is called once per frame
