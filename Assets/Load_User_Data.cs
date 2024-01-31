@@ -6,6 +6,12 @@ using TMPro;
 public class Load_User_Data : MonoBehaviour
 {
     public TextMeshProUGUI PlayerListText;
+    public TextMeshProUGUI CurrentPlayerText;
+    public GameObject textPrefab;
+    public Transform spawnLocation;
+    public GameObject parentObject;
+
+    private List<GameObject> createdTextObjects = new List<GameObject>();
 
     // Start is called before the first frame update
     [SerializeField]
@@ -19,7 +25,7 @@ public class Load_User_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     public void LoadPlayerNames()
@@ -31,21 +37,44 @@ public class Load_User_Data : MonoBehaviour
 
         foreach (playerprefsplus_player item in players)
         {
-           
+
             if (!(item.Title == "Default Values"))
             {
                 string name = item.Title;
                 Debug.Log(name);
-                playerListBuilder.AppendLine(name);
+                GameObject textObject = new GameObject(item.Title);
+                TextMeshPro textMesh = textObject.AddComponent<TextMeshPro>();
+                textMesh.text = item.Title;
+                textMesh.fontSize = 150;
+                textMesh.autoSizeTextContainer = true;
+                textObject.transform.SetParent(parentObject.transform, false);
+                //playerListBuilder.AppendLine(name);
+                createdTextObjects.Add(textObject);
             }
-            
+
         }
 
-        PlayerListText.text = playerListBuilder.ToString();
+        //PlayerListText.text = playerListBuilder.ToString();
         playerprefsplus.Close();
+    }
+
+    public void ClearTextObjects()
+    {
+        foreach (GameObject textObj in createdTextObjects) 
+        {
+            Destroy(textObj);
+        }
     }
     public void ShowPlayerSelection()
     {
         //PlayerListText.text = Player_pref.CurrentPlayerName;
     }
+
+    public void LoadCurrentPlayerText()
+    {
+        CurrentPlayerText.text = Player_pref.CurrentPlayerName;
+
+    }
+
 }
+
