@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Load_User_Data : MonoBehaviour
 {
-    public TextMeshProUGUI PlayerListText;
+    public TextMeshProUGUI CurrentPlayerText;
+    public GameObject buttonPrefab;
+    public Transform spawnLocation;
+    public GameObject parentObject;
+    public GameObject Main_Menu_Canvas;
+    public GameObject Create_User_Canvas;
 
-    // Start is called before the first frame update
-    [SerializeField]
-    private static string CurrentPlayer = Player_pref.CurrentPlayerName;
+    private List<GameObject> createdButtonObjects = new List<GameObject>();
 
     void Start()
     {
-
+        // Call LoadPlayerNames() or any other initialization if needed
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
+        // Update logic if needed
     }
 
     public void LoadPlayerNames()
@@ -27,25 +30,55 @@ public class Load_User_Data : MonoBehaviour
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
         playerprefsplus_player[] players;
         int count = playerprefsplus.GetAllPlayers(out players);
-        System.Text.StringBuilder playerListBuilder = new System.Text.StringBuilder();
 
         foreach (playerprefsplus_player item in players)
         {
-           
             if (!(item.Title == "Default Values"))
             {
                 string name = item.Title;
                 Debug.Log(name);
-                playerListBuilder.AppendLine(name);
+
+                GameObject buttonObject = Instantiate(buttonPrefab, parentObject.transform);
+                Button buttonComponent = buttonObject.GetComponent<Button>();
+                TextMeshProUGUI buttonText = buttonObject.GetComponentInChildren<TextMeshProUGUI>();
+
+                buttonText.text = name;
+                buttonComponent.onClick.AddListener(() => OnButtonClick(name));
+
+                createdButtonObjects.Add(buttonObject);
             }
-            
         }
 
-        PlayerListText.text = playerListBuilder.ToString();
         playerprefsplus.Close();
     }
+
+    public void ClearButtonObjects()
+    {
+        foreach (GameObject buttonObj in createdButtonObjects)
+        {
+            Destroy(buttonObj);
+        }
+
+        createdButtonObjects.Clear();
+    }
+
+    public void OnButtonClick(string playerName)
+    {
+        // Handle button click for the selected player (you can modify this method as needed)
+        Debug.Log("Button clicked for player: " + playerName);
+        Main_Menu_Canvas.SetActive(true);
+        Create_User_Canvas.SetActive(false);
+        CurrentPlayerText.text =  playerName;
+
+    }
+
     public void ShowPlayerSelection()
     {
-        //PlayerListText.text = Player_pref.CurrentPlayerName;
+        // Update UI or perform any actions related to player selection
+    }
+
+    public void LoadCurrentPlayerText()
+    {
+        CurrentPlayerText.text = Player_pref.CurrentPlayerName;
     }
 }

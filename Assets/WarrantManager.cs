@@ -50,9 +50,6 @@ public class WarrantManager : MonoBehaviour
 
         validEvidenceList = new List<string>(typeOfEvidence.Split(" and "));
         
-
-
-
     }
     // Build the warrant text using string interpolation
     private string GenerateWarrantText()
