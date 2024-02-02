@@ -7,7 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class BagSocket : MonoBehaviour
 {
-    public int score;
+    public GameObject bags;
+    private ScoreTracker tracker;
     private XRSocketInteractor socket;
     private GameObject item = null;
     private WarrantManager manager;
@@ -18,6 +19,7 @@ public class BagSocket : MonoBehaviour
     void Start()
     {
         GameObject warrant = GameObject.FindWithTag("manager");
+        tracker = bags.GetComponent<ScoreTracker>();
         socket = GetComponent<XRSocketInteractor>();
         manager = warrant.GetComponent<WarrantManager>();
         warrantDesk = manager.exactDesk;
@@ -33,14 +35,14 @@ public class BagSocket : MonoBehaviour
         {
             if (tagsList.Contains(ID.type))
             {
-                score++;
+                tracker.score++;
                 found = true;
             }
         }
         if (found)
             found = false;
         else
-            score--;
+            tracker.score--;
         item.SetActive(false);
         socket.enabled = false;
     }

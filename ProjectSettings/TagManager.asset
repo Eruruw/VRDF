@@ -6,6 +6,7 @@ TagManager:
   tags:
   - socket
   - manager
+  - evidence
   layers:
   - Default
   - TransparentFX
