@@ -14,7 +14,7 @@ public class Load_User_Data : MonoBehaviour
     public GameObject Create_User_Canvas;
 
     private List<GameObject> createdButtonObjects = new List<GameObject>();
-    private UserManager user = userMan.GetComponent<UserManager>();
+    private UserManager user;
 
     void Start()
     {
@@ -72,8 +72,6 @@ public class Load_User_Data : MonoBehaviour
         Main_Menu_Canvas.SetActive(true);
         Create_User_Canvas.SetActive(false);
         CurrentPlayerText.text = playerName;
-        GameObject userMan = GameObject.Find("UserManager");
-        UserManager user = userMan.GetComponent<UserManager>();
         user.currentUser = playerName;
     }
 
