@@ -43,7 +43,12 @@ public class ScoreTracker : MonoBehaviour
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
         playerprefsplus.GetPlayerByName(username);
         if (playerprefsplus.HasKey("OfficeScore"))
-            playerprefsplus.Set("OfficeScore", calc);
+        {
+            Dictionary<string, object> playerprefs = playerprefsplus.Get();
+            float prev = (float)playerprefs["OfficeScore"];
+            float best = Mathf.Max(calc, prev);
+            playerprefsplus.Set("OfficeScore", best);
+        }
         playerprefsplus.Save();
     }
 }

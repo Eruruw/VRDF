@@ -14,10 +14,13 @@ public class Load_User_Data : MonoBehaviour
     public GameObject Create_User_Canvas;
 
     private List<GameObject> createdButtonObjects = new List<GameObject>();
+    private UserManager user = userMan.GetComponent<UserManager>();
 
     void Start()
     {
         // Call LoadPlayerNames() or any other initialization if needed
+        GameObject userMan = GameObject.Find("UserManager");
+        user = userMan.GetComponent<UserManager>();
     }
 
     void Update()
@@ -68,8 +71,10 @@ public class Load_User_Data : MonoBehaviour
         Debug.Log("Button clicked for player: " + playerName);
         Main_Menu_Canvas.SetActive(true);
         Create_User_Canvas.SetActive(false);
-        CurrentPlayerText.text =  playerName;
-
+        CurrentPlayerText.text = playerName;
+        GameObject userMan = GameObject.Find("UserManager");
+        UserManager user = userMan.GetComponent<UserManager>();
+        user.currentUser = playerName;
     }
 
     public void ShowPlayerSelection()
