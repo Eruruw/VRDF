@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6771197199114459552}
   - component: {fileID: 49264981179385684}
+  - component: {fileID: 5499560545802206708}
+  - component: {fileID: 5335565160179744071}
   m_Layer: 0
   m_Name: Office Lamp A
   m_TagString: Untagged
@@ -146,6 +148,36 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3670600774789375751}
   m_Enabled: 1
+--- !u!54 &5499560545802206708
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244819704277008725}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &5335565160179744071
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244819704277008725}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1431844896295157829, guid: 084f1745896f0cb47b60f83315150d62, type: 3}
 --- !u!1 &3022033568054871762
 GameObject:
   m_ObjectHideFlags: 0

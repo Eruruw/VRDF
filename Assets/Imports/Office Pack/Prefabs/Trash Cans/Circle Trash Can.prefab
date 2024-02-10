@@ -208,6 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4696391708293493760}
   - component: {fileID: 7250748215878679936}
+  - component: {fileID: 8614968639485214897}
+  - component: {fileID: 2395291936391677209}
   m_Layer: 0
   m_Name: Circle Trash Can
   m_TagString: Untagged
@@ -260,6 +262,36 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2641506695102384862}
   m_Enabled: 1
+--- !u!54 &8614968639485214897
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346180838843828983}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &2395291936391677209
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346180838843828983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2455079418677237005, guid: 52f068ac7fb821f4da687d0bd5a847b2, type: 3}
 --- !u!1 &4644072313200353414
 GameObject:
   m_ObjectHideFlags: 0
