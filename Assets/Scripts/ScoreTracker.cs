@@ -12,9 +12,11 @@ public class ScoreTracker : MonoBehaviour
     private WarrantManager manager;
     private string warrantDesk;
     private List<string> tagsList;
+    public bool warrantGrabbed { get; set; }
 
     void Start()
     {
+        warrantGrabbed = false;
         evidence = GameObject.FindGameObjectsWithTag("evidence");
         GameObject userMan = GameObject.Find("UserManager");
         UserManager user = userMan.GetComponent<UserManager>();
@@ -33,13 +35,24 @@ public class ScoreTracker : MonoBehaviour
             }
         }
     }
+    void Update()
+    {
+        Debug.Log(username);
+    }
+
+    public void WarrantGrabbbed()
+    {
+        warrantGrabbed = true;
+    }
 
     void OnDisable()
     {
+        
         if (total != 0)
             calc = score / total;
         else
             calc = 0;
+        
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
         playerprefsplus.GetPlayerByName(username);
         if (playerprefsplus.HasKey("OfficeScore"))
