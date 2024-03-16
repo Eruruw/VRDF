@@ -25,7 +25,7 @@ public class ActivateTeleportationRay : MonoBehaviour
 
 
 
-    public bool isEnable;
+    public bool isEnable { get; set; }
     // Start is called before the first frame update
     void Start()
     {

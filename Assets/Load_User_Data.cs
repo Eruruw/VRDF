@@ -12,7 +12,9 @@ public class Load_User_Data : MonoBehaviour
     public GameObject parentObject;
     public GameObject Main_Menu_Canvas;
     public GameObject Create_User_Canvas;
-
+    public LocomotionManager locomotionManager;
+    public ActivateTeleportationRay activateTeleportationRay;
+    public TMP_Dropdown movementDropdown;
     private List<GameObject> createdButtonObjects = new List<GameObject>();
     private UserManager user;
 
@@ -20,7 +22,10 @@ public class Load_User_Data : MonoBehaviour
     {
         // Call LoadPlayerNames() or any other initialization if needed
         GameObject userMan = GameObject.Find("UserManager");
-        user = userMan.GetComponent<UserManager>();
+        if (userMan != null)
+        {
+            user = userMan.GetComponent<UserManager>();
+        }
     }
 
     void Update()
@@ -73,6 +78,11 @@ public class Load_User_Data : MonoBehaviour
         Create_User_Canvas.SetActive(false);
         CurrentPlayerText.text = playerName;
         user.currentUser = playerName;
+        
+        Player_pref.CurrentPlayerName = playerName;
+
+        LoadCurrentPLayerSettings();
+
     }
 
     public void ShowPlayerSelection()
@@ -83,5 +93,26 @@ public class Load_User_Data : MonoBehaviour
     public void LoadCurrentPlayerText()
     {
         CurrentPlayerText.text = Player_pref.CurrentPlayerName;
+    }
+
+    public void LoadCurrentPLayerSettings()
+    {
+        Debug.Log(Player_pref.CurrentPlayerName);
+        PlayerPrefsPlus currentPlayerPrefs = new PlayerPrefsPlus(Player_pref.CurrentPlayerName);
+        Dictionary<string, object> playerprefs = currentPlayerPrefs.Get();
+        bool continuiousMovement = (bool)playerprefs["ContinousMovementDefault"];
+        if (continuiousMovement == false)
+        {
+            locomotionManager.SwitchLocomotion(1);
+            activateTeleportationRay.SwitchLocomotion(1);
+            movementDropdown.value = 1;
+        }
+        else {
+            locomotionManager.SwitchLocomotion(0);
+            activateTeleportationRay.SwitchLocomotion(0);
+            movementDropdown.value = 0;
+        }
+        currentPlayerPrefs.Close();
+
     }
 }

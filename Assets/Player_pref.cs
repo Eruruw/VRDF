@@ -9,16 +9,15 @@ public class Player_pref : MonoBehaviour
 
 {
     public TMP_InputField CreateUserInputField;
-    public static PlayerPrefsPlus CurrentPlayer;
-    public static string CurrentPlayerName;
+    public static PlayerPrefsPlus CurrentPlayer { get; set; }
+    public static string CurrentPlayerName { get; set; }
     public GameObject Main_Menu_Canvas;
     public GameObject New_Player_Screen;
-    public 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     bool IsInputValid(string input)

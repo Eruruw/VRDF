@@ -13,10 +13,11 @@ public class LocomotionManager : MonoBehaviour
     public TeleportationProvider teleportationProvider;
     public ContinuousMoveProviderBase continuousMoveProviderBase;
 
+    private UserManager user;
+
     void Start()
     {
-        //teleportationProvider = GetComponent<TeleportationProvider>();
-        //continuousMoveProviderBase = GetComponent<ContinuousMoveProviderBase>();
+   
     }
 
     public void SwitchLocomotion(int locomotionValue)
@@ -35,27 +36,23 @@ public class LocomotionManager : MonoBehaviour
 
     private void DisableTeleport()
     {
-        //leftRayTeleport.SetActive(false);
-        //rightRayTeleport.SetActive(false);
         teleportationProvider.enabled = false;
         
     }
 
     private void DisableContinuous()
     {
-        continuousMoveProviderBase.enabled = false;
+        continuousMoveProviderBase.moveSpeed = 0;
     }
 
     private void EnableTeleport()
     {
-        // leftRayTeleport.SetActive(true);
-        //rightRayTeleport.SetActive(true);
         teleportationProvider.enabled = true;
     }
 
     private void EnableContinuous()
     {
-        continuousMoveProviderBase.enabled = true;
+        continuousMoveProviderBase.moveSpeed = 5;
     }
     // Update is called once per frame
     void Update()
