@@ -9,6 +9,7 @@ public class UserManager : MonoBehaviour
     public string currentUser;
     public string nextSceneToLoad;
     public static UserManager instance = null;
+    public int caseNumber { get; private set; }
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class UserManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        caseNumber = UnityEngine.Random.Range(1000,10000);
         DontDestroyOnLoad(gameObject);
 
     }
@@ -30,6 +31,11 @@ public class UserManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         ClearTempFiles();
+    }
+
+    public void GenerateNewCaseNumber()
+    {
+        caseNumber = UnityEngine.Random.Range(1000, 10000);
     }
 
     void ClearTempFiles()

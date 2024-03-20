@@ -41,7 +41,7 @@ public class WarrantManager : MonoBehaviour
         caseNumber = (UnityEngine.Random.Range(1000, 10000)).ToString();
         date = currentDate.ToShortDateString();
         exactAddress = "2314 Cyber Lane, Techville, Louisiana";
-        exactDesk =  DeskNames[new System.Random().Next(DeskNames.Count)] + "'s";
+        exactDesk =  DeskNames[new System.Random().Next(DeskNames.Count)];
         typeOfEvidence = string.Join(" and ",associatedEvidence);
         typeOfCrime = generatedCrime.ToString().Replace("_"," ");
         day = currentDate.DayOfWeek.ToString();
@@ -66,7 +66,7 @@ Proof by affidavit having been made this day to me by Officer Harrison, who has 
 
 And, whereas, said affidavit has established probable cause to believe that the property so described is being concealed on the premises above described and that the foregoing grounds for application for search warrant exist:
 
-YOU ARE HEREBY COMMANDED to search on or before {date}, {exactDesk} desk located at {exactAddress} for the property specified and, if found, to seize it, leaving a copy of this warrant and receipt for the property taken and prepare a written inventory of the seized property and promptly return this warrant to Judge Elizabeth Smith at the Louisiana Superior Court of Lincoln Parish.
+YOU ARE HEREBY COMMANDED to search on or before {date}, {exactDesk}'s desk located at {exactAddress} for the property specified and, if found, to seize it, leaving a copy of this warrant and receipt for the property taken and prepare a written inventory of the seized property and promptly return this warrant to Judge Elizabeth Smith at the Louisiana Superior Court of Lincoln Parish.
 
 Given under my hand and dated this {day} of {month}, {year}.
 
