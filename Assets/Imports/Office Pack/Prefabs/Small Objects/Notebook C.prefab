@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4697429844355014609}
   m_Layer: 0
   m_Name: Notebook C
-  m_TagString: Untagged
+  m_TagString: evidence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

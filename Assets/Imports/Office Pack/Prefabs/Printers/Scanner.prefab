@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7407162333915422955}
   m_Layer: 0
   m_Name: Scanner
-  m_TagString: Untagged
+  m_TagString: evidence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

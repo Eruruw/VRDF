@@ -244,8 +244,9 @@ GameObject:
   - component: {fileID: 5240024497700610410}
   - component: {fileID: 1913720397510016995}
   - component: {fileID: 1368562594690870171}
-  - component: {fileID: 5288767055529609815}
   - component: {fileID: 1473936155642648521}
+  - component: {fileID: 3715848796758784200}
+  - component: {fileID: 8858416202609354385}
   m_Layer: 0
   m_Name: Notebook
   m_TagString: Untagged
@@ -317,20 +318,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &5288767055529609815
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4896431114878090192}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8049376972830256100, guid: 3d1760328d45f7a489efdfd07a45909d, type: 3}
 --- !u!114 &1473936155642648521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +443,32 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!65 &3715848796758784200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896431114878090192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7529322, y: 0.02902666, z: 0.45679992}
+  m_Center: {x: -0.0020602345, y: 0.010912881, z: 0.02675119}
+--- !u!65 &8858416202609354385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896431114878090192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7568181, y: 0.43944663, z: 0.122342765}
+  m_Center: {x: -0.0024323761, y: 0.21714175, z: 0.31518832}
 --- !u!1 &5458620345585128288
 GameObject:
   m_ObjectHideFlags: 0
