@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 3559402004023313125}
   - component: {fileID: 6215594152296205363}
   - component: {fileID: 6475756039845385531}
+  - component: {fileID: -7676143730132117842}
   m_Layer: 0
   m_Name: Frame
   m_TagString: evidence
@@ -337,6 +338,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-7676143730132117842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389034831906632507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: personal
 --- !u!1 &5922003009159928682
 GameObject:
   m_ObjectHideFlags: 0

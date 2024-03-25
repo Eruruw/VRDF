@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 1593822560104889178}
   - component: {fileID: 6945360187763331985}
   - component: {fileID: 6912449834607351748}
+  - component: {fileID: 3304319653556137016}
   m_Layer: 0
   m_Name: Mobile Phone
   m_TagString: Untagged
@@ -386,6 +387,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &3304319653556137016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3897137936826830374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: digital
 --- !u!1 &8666429715736896447
 GameObject:
   m_ObjectHideFlags: 0

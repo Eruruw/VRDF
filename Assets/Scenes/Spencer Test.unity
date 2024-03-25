@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2284,6 +2284,10 @@ PrefabInstance:
     - target: {fileID: 5262300649669596244, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_Name
       value: LCubicle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298285572392836849, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
+      propertyPath: m_text
+      value: Elena Hawthorne
       objectReference: {fileID: 0}
     - target: {fileID: 8264721356542591351, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder

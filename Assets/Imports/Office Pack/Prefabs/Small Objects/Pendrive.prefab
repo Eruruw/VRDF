@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8651887952647487297}
   - component: {fileID: 9146568039447374675}
   - component: {fileID: 1272371882508585516}
+  - component: {fileID: -7399298448930065138}
   m_Layer: 0
   m_Name: Pendrive
   m_TagString: evidence
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-7399298448930065138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216339833886338151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: digital
 --- !u!1 &5714741389977891768
 GameObject:
   m_ObjectHideFlags: 0
