@@ -1,0 +1,11 @@
+Model Information:
+* title:	Name Plate
+* source:	https://sketchfab.com/3d-models/name-plate-1c809c3aa8564665beaab1d1950cb3c7
+* author:	Andrew.Mischenko (https://sketchfab.com/Andrew.Mischenko)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Name Plate" (https://sketchfab.com/3d-models/name-plate-1c809c3aa8564665beaab1d1950cb3c7) by Andrew.Mischenko (https://sketchfab.com/Andrew.Mischenko) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

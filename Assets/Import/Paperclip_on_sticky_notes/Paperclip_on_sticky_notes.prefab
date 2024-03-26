@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7386855307979309910}
   - component: {fileID: 5553439934543173770}
   - component: {fileID: 2000508373996958272}
+  - component: {fileID: -1143091800580910100}
   m_Layer: 0
   m_Name: Paperclip_on_sticky_notes
   m_TagString: evidence
@@ -221,6 +222,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-1143091800580910100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144782519716666465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: documentary
 --- !u!1 &2292021554330714971
 GameObject:
   m_ObjectHideFlags: 0

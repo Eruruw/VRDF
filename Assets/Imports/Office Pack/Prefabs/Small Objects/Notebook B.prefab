@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 2564078792468919058}
   - component: {fileID: 3074680898436803301}
   - component: {fileID: 8358318968827388623}
+  - component: {fileID: 3521650820525548754}
   m_Layer: 0
   m_Name: Notebook B
   m_TagString: evidence
@@ -482,6 +483,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &3521650820525548754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598940283697773895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: documentary
 --- !u!1 &7305647652791138858
 GameObject:
   m_ObjectHideFlags: 0

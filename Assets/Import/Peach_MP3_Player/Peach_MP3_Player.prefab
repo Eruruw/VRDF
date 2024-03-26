@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1675380922226682275}
   - component: {fileID: 6534203645393855204}
   - component: {fileID: 8328801146867915816}
+  - component: {fileID: -1982813266208830688}
   m_Layer: 0
   m_Name: Peach_MP3_Player
   m_TagString: evidence
@@ -221,6 +222,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-1982813266208830688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538144814993770907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: digital
 --- !u!1 &4680715530594665835
 GameObject:
   m_ObjectHideFlags: 0

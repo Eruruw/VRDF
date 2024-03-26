@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1286499517421812052}
   - component: {fileID: 9065095761618410167}
   - component: {fileID: 6654507326935252681}
+  - component: {fileID: -5600136280320452946}
   m_Layer: 0
   m_Name: Notepad
   m_TagString: evidence
@@ -189,6 +190,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-5600136280320452946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435462459121039827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: documentary
 --- !u!1 &1826375093653202372
 GameObject:
   m_ObjectHideFlags: 0

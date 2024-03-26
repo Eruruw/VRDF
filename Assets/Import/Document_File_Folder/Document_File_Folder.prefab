@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 8519844482537112421}
   - component: {fileID: 966985803665579726}
   - component: {fileID: -1053769623114955902}
+  - component: {fileID: 8332677065493550938}
   m_Layer: 0
   m_Name: Document_File_Folder
   m_TagString: evidence
@@ -318,6 +319,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &8332677065493550938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659000246469257653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: documentary
 --- !u!1 &1415315572542743207
 GameObject:
   m_ObjectHideFlags: 0
