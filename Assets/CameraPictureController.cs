@@ -7,11 +7,16 @@ public class CameraPictureController : MonoBehaviour
 {
     private UserManager user;
     private ScoreTracker scoreTracker;
+    private float initialYPosition = 0.0008468628f; // Initial Y position of the first picture
+    private float yOffset = 70.0f; // Offset for Y position of each new picture
+    private float maxYPosition = -6.94001f; // Maximum Y position
+    private float newXPosition = 9.50f; // New X position when Y position exceeds the maximum
+    private float initialXPosition; // Initial X position
 
-    public Camera cameraToCapture; // Assign the camera you want to capture from in the inspector
-    public RenderTexture renderTexture; // Assign your RenderTexture here
-    public GameObject pictureDisplayPrefab; // Prefab of the UI image to display pictures
-    public Transform pictureDisplayParent; // Parent transform for the picture display UI elements
+    public Camera cameraToCapture;
+    public RenderTexture renderTexture;
+    public GameObject pictureDisplayPrefab;
+    public Transform pictureDisplayParent;
 
     private void Start()
     {
@@ -25,6 +30,9 @@ public class CameraPictureController : MonoBehaviour
         {
             scoreTracker = player.GetComponent<ScoreTracker>();
         }
+
+        // Set initial X position
+        initialXPosition = 8.392334e-05f; // Set the initial X position to 1.8
     }
 
     public void TakePicture()
@@ -35,65 +43,52 @@ public class CameraPictureController : MonoBehaviour
     IEnumerator CaptureAndSave()
     {
         string pictureNumber = scoreTracker.numberOfPicturesTaken.ToString();
-        // Wait for the end of the frame to ensure all rendering is complete
         yield return new WaitForEndOfFrame();
 
-        // Save the current RenderTexture so we can restore it after the capture
         RenderTexture currentRT = RenderTexture.active;
-
-        // Set the RenderTexture to be the one from the camera
         RenderTexture.active = cameraToCapture.targetTexture ?? renderTexture;
 
-        // Create a Texture2D to copy the RenderTexture into
         Texture2D texture = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
         texture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
         texture.Apply();
 
-        // Restore the original RenderTexture
         RenderTexture.active = currentRT;
         string directoryPath = "/Captures" + "/" + user.currentUser;
-        // Create directory
         string fulldirectoryPath = Application.temporaryCachePath + directoryPath;
-        // Ensure the directory exists
-        System.IO.Directory.CreateDirectory(fulldirectoryPath); // No exception if it already exists
+        System.IO.Directory.CreateDirectory(fulldirectoryPath);
 
-        // Define the file path including the directory
         string filePath = fulldirectoryPath + "/Capture" + pictureNumber + ".png";
-        // Save the image
         System.IO.File.WriteAllBytes(filePath, texture.EncodeToPNG());
 
         Debug.Log("Captured Image Saved to: " + filePath);
         scoreTracker.numberOfPicturesTaken += 1;
 
-        // Display the captured picture
+        // Display the captured picture with adjusted Y position
         DisplayPicture(filePath);
     }
 
     void DisplayPicture(string filePath)
     {
-        // Instantiate a new picture display prefab
         GameObject pictureDisplay = Instantiate(pictureDisplayPrefab, pictureDisplayParent);
 
-        // Load the image from file and assign it to the picture display UI element
         byte[] fileData = System.IO.File.ReadAllBytes(filePath);
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(fileData);
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         pictureDisplay.GetComponent<Image>().sprite = sprite;
 
-        // Adjust the position of the instantiated picture display
         RectTransform rt = pictureDisplay.GetComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f); // Set anchor to top-center
-        rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 1f); // Set pivot to top-center
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
 
-        // Calculate maximum allowable vertical position
-        float canvasHeight = 728f;
-        float imageHeight = 100f;
-        float maxVerticalPosition = -(canvasHeight / 2f) + (imageHeight / 2f);
+        // Calculate the Y position based on the number of pictures taken
+        float newYPosition = initialYPosition - (scoreTracker.numberOfPicturesTaken - 1) * yOffset;
 
-        // Adjust vertical position to ensure it stays within canvas bounds
-        float yOffset = Mathf.Clamp(-(imageHeight + 10) * scoreTracker.numberOfPicturesTaken, maxVerticalPosition, 0f);
-        rt.anchoredPosition = new Vector2(0, yOffset);
+        // Set the picture to the calculated position
+        rt.localPosition = new Vector3(initialXPosition, newYPosition, 75.61248f);
+
+        // Force the scale to be 0.5630413 for all dimensions (X, Y, Z)
+        rt.localScale = new Vector3(0.5784238f, 0.5784238f, 0.5784238f);
     }
 }
