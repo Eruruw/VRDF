@@ -6,14 +6,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CartController : MonoBehaviour
 {
     private XRGrabInteractable grabInteractable;
-    private Quaternion initialRotation;
+    private float initialHandRotation;
     IXRInteractor interactor;
     public float rotationDampening = 5.0f;
+    float initalCartYRotation;
 
     void Start()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
-        initialRotation = transform.rotation;
+        //initialRotation = transform.rotation;
 
         grabInteractable.selectEntered.AddListener(OnGrab);
         grabInteractable.selectExited.AddListener(OnRelease);
@@ -22,7 +23,10 @@ public class CartController : MonoBehaviour
     void OnGrab(SelectEnterEventArgs args)
     {
         // Optional: Save initial grab rotation if needed for more complex rotation handling
-        interactor = args.interactorObject; 
+        
+        interactor = args.interactorObject;
+        initialHandRotation = interactor.transform.rotation.eulerAngles.y;
+        initalCartYRotation = transform.eulerAngles.y;
     }
 
     void OnRelease(SelectExitEventArgs args)
@@ -35,12 +39,11 @@ public class CartController : MonoBehaviour
     {
         if (grabInteractable.isSelected)
         {
-            // While selected, override position and rotation each frame
-            //Vector3 newPosition = transform.position;
-            float newYRotation = interactor.transform.rotation.eulerAngles.y;
-            //newPosition.y = 0; // Maintain y position
 
-            Quaternion newRotation = Quaternion.Euler(0, newYRotation, 0);
+            float newHandYRotation = interactor.transform.rotation.eulerAngles.y;
+            float YRotation = (initalCartYRotation - (initialHandRotation - newHandYRotation));
+    
+            Quaternion newRotation = Quaternion.Euler(0, YRotation, 0);
 
             //transform.position = newPosition;
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * rotationDampening);

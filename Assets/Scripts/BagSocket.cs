@@ -16,7 +16,7 @@ public class BagSocket : MonoBehaviour
     private string warrantDesk;
     private List<string> tagsList;
     private bool found = false;
-    private string itemName;
+    public string itemName {get; private set; }
     UserManager user;
 
     void Start()

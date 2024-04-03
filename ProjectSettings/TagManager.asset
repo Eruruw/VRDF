@@ -9,6 +9,8 @@ TagManager:
   - manager
   - evidence
   - OfficeButton
+  - EvidenceBag
+  - Cart
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - 
   - Player
   - Interactable
-  - 
-  - 
+  - Cart
+  - EvidenceBag
   - 
   - 
   - 
