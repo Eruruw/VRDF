@@ -283,9 +283,9 @@ GameObject:
   - component: {fileID: 1457466533948294254}
   - component: {fileID: 1457466533948294249}
   - component: {fileID: 1520498413554089036}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bag
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -299,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 1457466533948294251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9091527283695945222}
@@ -467,8 +467,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.78902304, y: 1.3546255, z: 0.039592415}
-  m_Center: {x: -0.018298775, y: -0.0007772072, z: -0.026744133}
+  m_Size: {x: 0.7890231, y: 1.3546255, z: 0.07789125}
+  m_Center: {x: -0.018298775, y: -0.00077719486, z: -0.014611597}
 --- !u!1 &2023360267520518990
 GameObject:
   m_ObjectHideFlags: 0

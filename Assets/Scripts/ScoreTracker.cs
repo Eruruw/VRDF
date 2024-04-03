@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScoreTracker : MonoBehaviour
 {
     public int score;
+    public int numberOfBagsInCart;
     private int total;
     private float calc;
     private string username;

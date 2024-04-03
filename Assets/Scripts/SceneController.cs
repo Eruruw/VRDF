@@ -7,7 +7,6 @@ public class SceneController : MonoBehaviour
 {
     public float loadingDelay = 5f; // Delay time in seconds
     public Slider loadingSlider;
-
     private UserManager user;
    
 
