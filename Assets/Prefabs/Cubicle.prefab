@@ -177,7 +177,6 @@ MonoBehaviour:
   - {fileID: 6123303311696927703, guid: 32ca58b1cc01f9241975ca2af8f6d0ad, type: 3}
   - {fileID: 7908579888291295144, guid: 2b235aa1cb9a9ed4e837163e1c1c34f2, type: 3}
   - {fileID: 3897137936826830374, guid: b6e7b412c37d07c4f8351c5e0f607c7a, type: 3}
-  - {fileID: 4389034831906632507, guid: 0792230edd775414b9f5b2686688ac2f, type: 3}
   - {fileID: 5598940283697773895, guid: e6fe733b19076be46ab2af39fa376591, type: 3}
   - {fileID: 4086644785688272896, guid: 8c29061ea021a85458551ab77d9b1775, type: 3}
   - {fileID: 4968553561359337196, guid: 869b0f93111ecdb4a86168cb2fc39d29, type: 3}
@@ -505,7 +504,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6675261865160076256}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &7920627106129771995
 Light:
