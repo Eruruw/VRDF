@@ -17,6 +17,7 @@ public class CameraPictureController : MonoBehaviour
     public RenderTexture renderTexture;
     public GameObject pictureDisplayPrefab;
     public Transform pictureDisplayParent;
+    private bool pictureInProgress;
 
     private void Start()
     {
@@ -37,7 +38,13 @@ public class CameraPictureController : MonoBehaviour
 
     public void TakePicture()
     {
+        //pictureInProgress = true;
+        gameObject.GetComponent<CapsuleCollider>().enabled = true;
+
         StartCoroutine(CaptureAndSave());
+        
+
+
     }
 
     IEnumerator CaptureAndSave()
@@ -65,6 +72,9 @@ public class CameraPictureController : MonoBehaviour
 
         // Display the captured picture with adjusted Y position
         DisplayPicture(filePath);
+        pictureInProgress = false;
+
+
     }
 
     void DisplayPicture(string filePath)
@@ -90,5 +100,23 @@ public class CameraPictureController : MonoBehaviour
 
         // Force the scale to be 0.5630413 for all dimensions (X, Y, Z)
         rt.localScale = new Vector3(0.5784238f, 0.5784238f, 0.5784238f);
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        Debug.Log("Colliding with " + other.gameObject);
+        //&& pictureInProgress == true
+        if (other.gameObject.tag == "Interactable" )
+        {
+            EvidenceID evidenceID = other.gameObject.GetComponent<EvidenceID>();
+            if (evidenceID != null)
+            {
+                evidenceID.picturetaken = true;
+                Debug.Log("evidence scanned");
+                
+            }
+        }
+        
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
 }

@@ -6,4 +6,5 @@ public class EvidenceID : MonoBehaviour
 {
     public string desk;
     public string type;
+    public bool picturetaken = false;
 }
