@@ -18,6 +18,7 @@ public class CameraPictureController : MonoBehaviour
     public GameObject pictureDisplayPrefab;
     public Transform pictureDisplayParent;
     private bool pictureInProgress;
+    private List<Collider> collidersInRange = new List<Collider>(); // List to store colliders in range
 
     private void Start()
     {
@@ -38,13 +39,10 @@ public class CameraPictureController : MonoBehaviour
 
     public void TakePicture()
     {
-        //pictureInProgress = true;
+        pictureInProgress = true;
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
 
         StartCoroutine(CaptureAndSave());
-        
-
-
     }
 
     IEnumerator CaptureAndSave()
@@ -74,7 +72,19 @@ public class CameraPictureController : MonoBehaviour
         DisplayPicture(filePath);
         pictureInProgress = false;
 
+        // Scan all colliders in range
+        foreach (Collider collider in collidersInRange)
+        {
+            EvidenceID evidenceID = collider.gameObject.GetComponent<EvidenceID>();
+            if (evidenceID != null)
+            {
+                evidenceID.picturetaken = true;
+                Debug.Log("Evidence scanned: " + collider.gameObject.name);
+            }
+        }
 
+        // Clear the list of colliders in range
+        collidersInRange.Clear();
     }
 
     void DisplayPicture(string filePath)
@@ -105,18 +115,29 @@ public class CameraPictureController : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         Debug.Log("Colliding with " + other.gameObject);
-        //&& pictureInProgress == true
-        if (other.gameObject.tag == "Interactable" )
+
+        if (other.gameObject.tag == "Interactable")
         {
-            EvidenceID evidenceID = other.gameObject.GetComponent<EvidenceID>();
-            if (evidenceID != null)
-            {
-                evidenceID.picturetaken = true;
-                Debug.Log("evidence scanned");
-                
-            }
+            // Add colliders in range to the list
+            if (!collidersInRange.Contains(other))
+                collidersInRange.Add(other);
         }
-        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        // Remove colliders from the list when they exit the trigger area
+        if (other.gameObject.tag == "Interactable" && collidersInRange.Contains(other))
+            collidersInRange.Remove(other);
+
+        // Check if the collider is evidence and set PictureTaken if applicable
+        EvidenceID evidenceID = other.gameObject.GetComponent<EvidenceID>();
+        if (evidenceID != null)
+        {
+            evidenceID.picturetaken = true;
+            Debug.Log("Evidence scanned");
+        }
+
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
 }

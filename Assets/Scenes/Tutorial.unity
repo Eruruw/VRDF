@@ -330,6 +330,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pen D
       objectReference: {fileID: 0}
+    - target: {fileID: 9123034081895999870, guid: 77f52ff3b662c404a9ef21f370c1224b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123034081895999870, guid: 77f52ff3b662c404a9ef21f370c1224b, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f52ff3b662c404a9ef21f370c1224b, type: 3}
 --- !u!1 &35536637 stripped
@@ -857,6 +865,14 @@ PrefabInstance:
     - target: {fileID: 5216339833886338151, guid: cbb131f59ebde2642824d85e4932dfc9, type: 3}
       propertyPath: m_Name
       value: Pendrive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216339833886338151, guid: cbb131f59ebde2642824d85e4932dfc9, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216339833886338151, guid: cbb131f59ebde2642824d85e4932dfc9, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb131f59ebde2642824d85e4932dfc9, type: 3}
@@ -1473,6 +1489,10 @@ PrefabInstance:
     - target: {fileID: 1261097946700614816, guid: 1ac828fdb63b58a4cbf5e82303f14635, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261097946700614816, guid: 1ac828fdb63b58a4cbf5e82303f14635, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 1930779021136680474, guid: 1ac828fdb63b58a4cbf5e82303f14635, type: 3}
       propertyPath: m_RootOrder
@@ -2361,6 +2381,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pen A
       objectReference: {fileID: 0}
+    - target: {fileID: 764123300287644923, guid: bda5e56c97e05584896e38bc25cd48ae, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 764123300287644923, guid: bda5e56c97e05584896e38bc25cd48ae, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 4853524662055445383, guid: bda5e56c97e05584896e38bc25cd48ae, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 20
@@ -2948,6 +2976,14 @@ PrefabInstance:
     - target: {fileID: 3030963975647180195, guid: b449b3e60ff06854cb17823bdab5fed8, type: 3}
       propertyPath: m_Name
       value: Pen C
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030963975647180195, guid: b449b3e60ff06854cb17823bdab5fed8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030963975647180195, guid: b449b3e60ff06854cb17823bdab5fed8, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 3352056964582991568, guid: b449b3e60ff06854cb17823bdab5fed8, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
@@ -4528,6 +4564,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pen B
       objectReference: {fileID: 0}
+    - target: {fileID: 7239812399612535120, guid: 1e886f819be9fab4e8ec6a5b02e3a65d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239812399612535120, guid: 1e886f819be9fab4e8ec6a5b02e3a65d, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e886f819be9fab4e8ec6a5b02e3a65d, type: 3}
 --- !u!1 &1355994069 stripped
@@ -5571,7 +5615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691241303108444771, guid: 997f5db7c01c17743bcb1410e1cfece6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.367
+      value: -3.323
       objectReference: {fileID: 0}
     - target: {fileID: 7691241303108444771, guid: 997f5db7c01c17743bcb1410e1cfece6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5579,7 +5623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691241303108444771, guid: 997f5db7c01c17743bcb1410e1cfece6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.003
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: 7691241303108444771, guid: 997f5db7c01c17743bcb1410e1cfece6, type: 3}
       propertyPath: m_LocalRotation.w
