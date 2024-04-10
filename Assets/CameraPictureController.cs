@@ -129,6 +129,7 @@ public class CameraPictureController : MonoBehaviour
         }
     }
 
+    /*
     public void OnTriggerExit(Collider other)
     {
         // Remove colliders from the list when they exit the trigger area
@@ -145,4 +146,5 @@ public class CameraPictureController : MonoBehaviour
 
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
+    */
 }
