@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - socket
+  - Interactable
+  - manager
+  - evidence
+  - OfficeButton
+  - EvidenceBag
+  - Cart
+  - CartTrigger
   layers:
   - Default
   - TransparentFX
@@ -11,14 +19,14 @@ TagManager:
   - 
   - Water
   - UI
+  - Hands
+  - Interactive
+  - Light
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interactable
+  - Cart
+  - EvidenceBag
   - 
   - 
   - 

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ikea Cart Dark Gray
+* source:	https://sketchfab.com/3d-models/ikea-cart-dark-gray-78b6ec5f1d784807bbda6d5eeebe0906
+* author:	clon6767 (https://sketchfab.com/clon6767)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ikea Cart Dark Gray" (https://sketchfab.com/3d-models/ikea-cart-dark-gray-78b6ec5f1d784807bbda6d5eeebe0906) by clon6767 (https://sketchfab.com/clon6767) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

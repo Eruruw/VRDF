@@ -1,0 +1,11 @@
+Model Information:
+* title:	Frame
+* source:	https://sketchfab.com/3d-models/frame-2b3a5ee1635a4108a5d8a2ccbaca4933
+* author:	rickmaolly (https://sketchfab.com/rickmaolly)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Frame" (https://sketchfab.com/3d-models/frame-2b3a5ee1635a4108a5d8a2ccbaca4933) by rickmaolly (https://sketchfab.com/rickmaolly) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

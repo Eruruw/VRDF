@@ -1,0 +1,11 @@
+Model Information:
+* title:	Revolver
+* source:	https://sketchfab.com/3d-models/revolver-9b98dbfefa134ae09f83fef75e96a787
+* author:	gulerbrkn (https://sketchfab.com/gulerbrkn)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Revolver" (https://sketchfab.com/3d-models/revolver-9b98dbfefa134ae09f83fef75e96a787) by gulerbrkn (https://sketchfab.com/gulerbrkn) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Computer case
+* source:	https://sketchfab.com/3d-models/computer-case-3cb0c95b955747aea22476264eecf390
+* author:	vitefait (https://sketchfab.com/vitefait-xr)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Computer case" (https://sketchfab.com/3d-models/computer-case-3cb0c95b955747aea22476264eecf390) by vitefait (https://sketchfab.com/vitefait-xr) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
