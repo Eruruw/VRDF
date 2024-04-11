@@ -47,6 +47,7 @@ public class CameraPictureController : MonoBehaviour
 
     IEnumerator CaptureAndSave()
     {
+        yield return new WaitForSeconds(.4f);
         string pictureNumber = scoreTracker.numberOfPicturesTaken.ToString();
         yield return new WaitForEndOfFrame();
 
@@ -73,6 +74,7 @@ public class CameraPictureController : MonoBehaviour
         pictureInProgress = false;
 
         // Scan all colliders in range
+        
         foreach (Collider collider in collidersInRange)
         {
             EvidenceID evidenceID = collider.gameObject.GetComponent<EvidenceID>();
@@ -82,9 +84,12 @@ public class CameraPictureController : MonoBehaviour
                 Debug.Log("Evidence scanned: " + collider.gameObject.name);
             }
         }
+        
 
         // Clear the list of colliders in range
         collidersInRange.Clear();
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+
     }
 
     void DisplayPicture(string filePath)
@@ -124,6 +129,7 @@ public class CameraPictureController : MonoBehaviour
         }
     }
 
+    /*
     public void OnTriggerExit(Collider other)
     {
         // Remove colliders from the list when they exit the trigger area
@@ -140,4 +146,5 @@ public class CameraPictureController : MonoBehaviour
 
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
+    */
 }
