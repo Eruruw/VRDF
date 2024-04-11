@@ -13002,7 +13002,7 @@ GameObject:
   - component: {fileID: 1290396569}
   - component: {fileID: 1290396568}
   m_Layer: 5
-  m_Name: Overall score (1)
+  m_Name: Grade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13208,6 +13208,26 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: gradeText
+      value: 
+      objectReference: {fileID: 1290396568}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: overallScoreText
+      value: 
+      objectReference: {fileID: 224150042}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: pictureScoreText
+      value: 
+      objectReference: {fileID: 1989630877}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: warrantScoreText
+      value: 
+      objectReference: {fileID: 246084874}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: evidenceScoreText
+      value: 
+      objectReference: {fileID: 2031883724}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b974a878db784845ab785ea177375e2, type: 3}
 --- !u!114 &1296730492 stripped
@@ -14012,6 +14032,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1365591192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+  m_PrefabInstance: {fileID: 1296730491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bd8f77db6cdf043a6eb142b3321671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376674920
 GameObject:
   m_ObjectHideFlags: 0
@@ -14124,6 +14155,7 @@ GameObject:
   - component: {fileID: 1378513391}
   - component: {fileID: 1378513390}
   - component: {fileID: 1378513393}
+  - component: {fileID: 1378513394}
   m_Layer: 0
   m_Name: ElevatorRisingTrigger
   m_TagString: Untagged
@@ -14219,6 +14251,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76f5002a997396d478fc3bb6d8b5e55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1378513394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378513387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80465974af4e8e74d876cdd15a4c562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1388672350
@@ -21479,6 +21523,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1365591192}
+        m_TargetAssemblyTypeName: ScoreTracker, Assembly-CSharp
+        m_MethodName: SaveScores
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1296730493}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: LoadMainMenuAsync

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class ScoreTracker : MonoBehaviour
     public int overallTotal;
     public float average;
     public string grade;
+    public TextMeshProUGUI evidenceScoreText;
+    public TextMeshProUGUI pictureScoreText;
+    public TextMeshProUGUI warrantScoreText;
+    public TextMeshProUGUI overallScoreText;
+    public TextMeshProUGUI gradeText;
     public bool crimeCommitted;
     public int numberOfBagsInCart;
     private float calc;
@@ -115,6 +121,15 @@ public class ScoreTracker : MonoBehaviour
             grade = "D";
         else
             grade = "F";
+    }
+
+    public void UpdateStats()
+    {
+        evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}";
+        pictureScoreText.text = $"Picture Score: {pictureScore} / {pictureTotal}";
+        warrantScoreText.text = $"Picked up Warrant?: {warrantGrabbed}";
+        overallScoreText.text = $"Overall Score: {overallScore} / {overallTotal}";
+        gradeText.text = $"Grade: {grade}";
     }
 
     public void SaveScores()

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ComputeScore : MonoBehaviour
 {
-    private void CalculateScore()
+    private void OnTriggerEnter(Collider other)
     {
         GameObject player = GameObject.Find("Player");
         ScoreTracker tracker = player.GetComponent<ScoreTracker>();
         tracker.TallyScores();
+        tracker.UpdateStats();
     }
 }
