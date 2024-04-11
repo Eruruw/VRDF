@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 6639822956990659783}
   m_Layer: 0
   m_Name: Warrant
-  m_TagString: Untagged
+  m_TagString: manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

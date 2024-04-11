@@ -203,7 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desk: 
-  type: documentary
+  type: Documentary
+  picturetaken: 0
 --- !u!1 &1826375093653202372
 GameObject:
   m_ObjectHideFlags: 0

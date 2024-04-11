@@ -198,6 +198,7 @@ MonoBehaviour:
   - {fileID: 659000246469257653, guid: c47423ba093fd4846a1697115df11648, type: 3}
   - {fileID: 435462459121039827, guid: c817c1aca6f67624b968906fc44531b8, type: 3}
   - {fileID: 1144782519716666465, guid: aa031dbc208ca354d83553276814b440, type: 3}
+  - {fileID: 4389034831906632507, guid: 0792230edd775414b9f5b2686688ac2f, type: 3}
   maxInstances: 6
   minInstances: 2
   spawnChance: 0.6

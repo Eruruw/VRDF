@@ -776,7 +776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desk: 
-  type: digital
+  type: Digital
+  picturetaken: 0
 --- !u!1 &5777628490327716524
 GameObject:
   m_ObjectHideFlags: 0

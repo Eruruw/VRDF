@@ -11,6 +11,7 @@ TagManager:
   - OfficeButton
   - EvidenceBag
   - Cart
+  - CartTrigger
   layers:
   - Default
   - TransparentFX

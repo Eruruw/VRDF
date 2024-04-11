@@ -9,20 +9,16 @@ public class NameUpdate : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // Check if the collider belongs to an object with the "evidence" tag
-        if (other.CompareTag("evidence"))
+       // Access the EvidenceID script attached to the collider's GameObject
+       EvidenceID evidenceID = other.GetComponent<EvidenceID>();
+            
+        // Check if the EvidenceID script is found    
+        if (evidenceID != null)
         {
-            // Access the EvidenceID script attached to the collider's GameObject
-            EvidenceID evidenceID = other.GetComponent<EvidenceID>();
-
-            // Check if the EvidenceID script is found
-            if (evidenceID != null)
+            if (namePlateText == null)
             {
-                if (namePlateText == null)
-                {
-                    // Set the name to the text from the TextMeshPro object
-                    evidenceID.desk = namePlateText.text;
-                }
+                // Set the name to the text from the TextMeshPro object
+                evidenceID.desk = namePlateText.text;
             }
         }
     }

@@ -14,8 +14,8 @@ public class BagSocket : MonoBehaviour
     private GameObject item = null;
     private WarrantManager manager;
     private string warrantDesk;
-    private List<string> tagsList;
-    private bool found = false;
+    public EvidenceID ID;
+    public List<string> tagsList;
     public string itemName {get; private set; }
     UserManager user;
 
@@ -40,20 +40,8 @@ public class BagSocket : MonoBehaviour
     {
         IXRSelectInteractable selItem = socket.GetOldestInteractableSelected();
         item = selItem.transform.gameObject;
-        EvidenceID ID = item.GetComponent<EvidenceID>();
+        ID = item.GetComponent<EvidenceID>();
         itemName = item.name;
-        if (ID.desk == warrantDesk)
-        {
-            if (tagsList.Contains(ID.type))
-            {
-                tracker.score++;
-                found = true;
-            }
-        }
-        if (found)
-            found = false;
-        else
-            tracker.score--;
         item.SetActive(false);
         socket.enabled = false;
 

@@ -287,4 +287,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desk: 
-  type: digital
+  type: Digital
+  picturetaken: 0

@@ -319,4 +319,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desk: 
-  type: documentary
+  type: Documentary
+  picturetaken: 0
