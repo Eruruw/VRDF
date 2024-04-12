@@ -15,11 +15,7 @@ public class NameUpdate : MonoBehaviour
         // Check if the EvidenceID script is found    
         if (evidenceID != null)
         {
-            if (namePlateText == null)
-            {
-                // Set the name to the text from the TextMeshPro object
-                evidenceID.desk = namePlateText.text;
-            }
+            evidenceID.desk = namePlateText.text;
         }
     }
 }
