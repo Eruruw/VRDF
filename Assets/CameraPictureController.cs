@@ -121,7 +121,7 @@ public class CameraPictureController : MonoBehaviour
     {
         Debug.Log("Colliding with " + other.gameObject);
 
-        if (other.gameObject.tag == "Interactable")
+        if (other.gameObject.tag == "evidence")
         {
             // Add colliders in range to the list
             if (!collidersInRange.Contains(other))

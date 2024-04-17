@@ -2241,7 +2241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1261097946700614816, guid: 1ac828fdb63b58a4cbf5e82303f14635, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: evidence
       objectReference: {fileID: 0}
     - target: {fileID: 1930779021136680474, guid: 1ac828fdb63b58a4cbf5e82303f14635, type: 3}
       propertyPath: m_RootOrder
@@ -9163,6 +9163,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: gradeText
+      value: 
+      objectReference: {fileID: 1736477577}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: overallScoreText
+      value: 
+      objectReference: {fileID: 962806074}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: pictureScoreText
+      value: 
+      objectReference: {fileID: 1250297404}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: warrantScoreText
+      value: 
+      objectReference: {fileID: 1515992393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b974a878db784845ab785ea177375e2, type: 3}
 --- !u!114 &2110440541 stripped
