@@ -53,6 +53,7 @@ public class LocomotionManager : MonoBehaviour
     private void EnableContinuous()
     {
         continuousMoveProviderBase.moveSpeed = 5;
+
     }
     // Update is called once per frame
     void Update()
