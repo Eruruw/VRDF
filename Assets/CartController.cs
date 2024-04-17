@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CartController : MonoBehaviour
 {
     private XRGrabInteractable grabInteractable;
-    private float initialHandRotation;
+    private float initialHandYRotation;
     IXRInteractor interactor;
     public float rotationDampening = 5.0f;
     float initalCartYRotation;
@@ -23,16 +23,52 @@ public class CartController : MonoBehaviour
     void OnGrab(SelectEnterEventArgs args)
     {
         // Optional: Save initial grab rotation if needed for more complex rotation handling
-        
+
         interactor = args.interactorObject;
-        initialHandRotation = interactor.transform.rotation.eulerAngles.y;
+        initialHandYRotation = interactor.transform.rotation.eulerAngles.y;
         initalCartYRotation = transform.eulerAngles.y;
+
+        CartTriggerZoneDectector cartTrigger = GetComponentInChildren<CartTriggerZoneDectector>();
+
+        if (cartTrigger.objectsInCart.Count != 0)
+        {
+            foreach (GameObject key in cartTrigger.objectsInCart.Keys)
+            {
+                Collider[] objectColliders = key.GetComponentsInChildren<Collider>();
+                foreach (Collider col in objectColliders)
+                {
+                    col.enabled = false; // Disable each collider
+                }
+            }
+        }
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
         // Optional: Reset or adjust rotation on release if needed
-        interactor = null; 
+        interactor = null;
+
+        CartTriggerZoneDectector cartTrigger = GetComponentInChildren<CartTriggerZoneDectector>();
+
+        if (cartTrigger.objectsInCart.Count != 0)
+        {
+            foreach (GameObject key in cartTrigger.objectsInCart.Keys)
+            {
+                Collider[] objectColliders = key.GetComponentsInChildren<Collider>();
+                foreach (Collider col in objectColliders)
+                {
+                    if (key.name == "REALcamera" && col is CapsuleCollider)
+                    {
+                        //do nothing
+                    }
+                    else 
+                    {
+                        col.enabled = true; // Enable each collider
+                    }
+                    
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -41,12 +77,17 @@ public class CartController : MonoBehaviour
         {
 
             float newHandYRotation = interactor.transform.rotation.eulerAngles.y;
-            float YRotation = (initalCartYRotation - (initialHandRotation - newHandYRotation));
+            float YRotation = (initalCartYRotation - (initialHandYRotation - newHandYRotation));
     
             Quaternion newRotation = Quaternion.Euler(0, YRotation, 0);
 
             //transform.position = newPosition;
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * rotationDampening);
         }
+    }
+    private void OnDestroy()
+    {
+        grabInteractable.selectEntered.RemoveListener(OnGrab);
+        grabInteractable.selectExited.RemoveListener(OnRelease);
     }
 }

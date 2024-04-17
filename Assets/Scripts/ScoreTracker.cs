@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Linq;
+using System;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -42,23 +44,31 @@ public class ScoreTracker : MonoBehaviour
             UserManager user = userMan.GetComponent<UserManager>();
             username = user.currentUser;
             GameObject warrant = GameObject.FindWithTag("manager");
-            manager = warrant.GetComponent<WarrantManager>();
+            manager = warrant.GetComponentInChildren<WarrantManager>();
             warrantDesk = manager.exactDesk;
             tagsList = manager.validEvidenceList;
             cartObject = GameObject.FindWithTag("CartTrigger");
             cartTransform = cartObject.GetComponent<Transform>();
-            foreach (GameObject item in evidence)
+            Debug.Log(warrantDesk);
+            Debug.Log(tagsList);
+            
+            StartCoroutine(Names());
+        }
+    }
+
+    IEnumerator Names() {
+        yield return new WaitForSeconds(.4f);
+        foreach (GameObject item in evidence)
+        {
+            item.gameObject.tag = "Interactable";
+            EvidenceID ID = item.GetComponent<EvidenceID>();
+            if (ID.desk == warrantDesk)
             {
-                item.gameObject.tag = "Interactable";
-                EvidenceID ID = item.GetComponent<EvidenceID>();
-                if (ID.desk == warrantDesk)
+                if (tagsList.Contains(ID.type))
                 {
-                    if (tagsList.Contains(ID.type))
-                    {
-                        evidenceTotal++;
-                        pictureTotal++;
-                        overallTotal = evidenceTotal + pictureTotal;
-                    }
+                    evidenceTotal++;
+                    pictureTotal++;
+                    overallTotal = evidenceTotal + pictureTotal;
                 }
             }
         }
@@ -130,22 +140,55 @@ public class ScoreTracker : MonoBehaviour
         warrantScoreText.text = $"Picked up Warrant?: {warrantGrabbed}";
         overallScoreText.text = $"Overall Score: {overallScore} / {overallTotal}";
         gradeText.text = $"Grade: {grade}";
+        //SaveScores();
     }
 
     public void SaveScores()
     {
         if (SceneManager.GetActiveScene().name == "Office")
         {
+
             PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
             playerprefsplus.GetPlayerByName(username);
-            if (playerprefsplus.HasKey("OfficeScore"))
+            if (playerprefsplus.HasKey("NumberOfOfficeRuns"))
             {
                 Dictionary<string, object> playerprefs = playerprefsplus.Get();
-                float prev = (float)playerprefs["OfficeScore"];
-                float best = Mathf.Max(average, prev);
-                playerprefsplus.Set("OfficeScore", best);
+                int prevNumOfRuns = (int)playerprefs["NumberOfOfficeRuns"]; //get number of runs for office
+                int updatedNumOfRuns = prevNumOfRuns + 1;
+                playerprefsplus.Set("NumberOfOfficeRuns", updatedNumOfRuns);
+                if (prevNumOfRuns == 0)
+                {
+                    playerprefsplus.Set("OfficeScores", average);
+                    playerprefsplus.Set("BestOfficeScore", average);
+                    playerprefsplus.Set("AverageOfficeScore", average);
+                }
+                else if (prevNumOfRuns == 1)
+                {
+                    float firstOfficeScore = (float)playerprefs["OfficeScores"];
+                    float[] twoOfficeScores = { firstOfficeScore, average };
+                    playerprefsplus.Set("OfficeScores", twoOfficeScores);
+                    playerprefsplus.Set("BestOfficeScore", twoOfficeScores.Max());
+                    playerprefsplus.Set("AverageOfficeScore", twoOfficeScores.Average());
+                }
+                else 
+                {
+                    object[] tempOfficeScores = (object[])playerprefs["OfficeScores"];      //get array of all Office Scores
+                    float[] allOfficeScores = tempOfficeScores.OfType<float>().ToArray();   //convert to float array
+                    Array.Resize(ref allOfficeScores, allOfficeScores.Length + 1);
+
+                    allOfficeScores[allOfficeScores.Length - 1] = average;                  //add current score to array
+                    foreach (float value in allOfficeScores)
+                    {
+                        Debug.Log($"Float value: {value}");
+                    }
+                    playerprefsplus.Set("OfficeScores", allOfficeScores);                   //set the updated array
+                    playerprefsplus.Set("BestOfficeScore", allOfficeScores.Max());          //set best score pref
+                    playerprefsplus.Set("AverageOfficeScore", allOfficeScores.Average());   //set average score
+                }
+                Debug.Log("Stats saved");
             }
             playerprefsplus.Save();
+            playerprefsplus.Close();
         }
     }
 }

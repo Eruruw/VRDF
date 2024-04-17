@@ -273,7 +273,7 @@ Transform:
   m_Children:
   - {fileID: 4344306252904140874}
   - {fileID: 140728353}
-  - {fileID: 4991584014444516731}
+  - {fileID: 4334114042081254099}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -526,21 +526,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationDampening: 5
---- !u!1001 &22837449
+--- !u!1001 &8746121270865606497
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 2821639865743331695}
     m_Modifications:
-    - target: {fileID: 1688923374940081443, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
-      propertyPath: m_Radius
-      value: 0.046338227
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688923374940081443, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
-      propertyPath: m_Center.z
-      value: -0.012063537
-      objectReference: {fileID: 0}
     - target: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -559,15 +551,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.65
+      value: -10.58
       objectReference: {fileID: 0}
     - target: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 78.9
+      value: 83.65
       objectReference: {fileID: 0}
     - target: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.05
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -603,8 +595,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
---- !u!4 &4991584014444516731 stripped
+--- !u!4 &4334114042081254099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4991584014422224306, guid: 0215bd55772f7a341bddfa20af39cc77, type: 3}
-  m_PrefabInstance: {fileID: 22837449}
+  m_PrefabInstance: {fileID: 8746121270865606497}
   m_PrefabAsset: {fileID: 0}

@@ -31,7 +31,7 @@ public class BagSocket : MonoBehaviour
         GameObject bags = GameObject.Find("Bags");
         tracker = bags.GetComponent<ScoreTracker>();
         socket = GetComponent<XRSocketInteractor>();
-        manager = warrant.GetComponent<WarrantManager>();
+        manager = warrant.GetComponentInChildren<WarrantManager>();
         warrantDesk = manager.exactDesk;
         tagsList = manager.validEvidenceList;
     }
