@@ -95,10 +95,10 @@ public class SpawnEvidence : MonoBehaviour
     private IEnumerator ApplyRotationAfterDelay(GameObject obj)
     {
         // Wait for a short delay
-        yield return new WaitForSeconds(0.1f); // Adjust the delay time as needed
+        yield return new WaitForSeconds(0.2f); // Adjust the delay time as needed
 
         // Random rotation
-        Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        Quaternion spawnRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
 
         // Set the rotation of the instantiated object
         obj.transform.rotation = spawnRotation;
