@@ -115,4 +115,11 @@ public class Load_User_Data : MonoBehaviour
         currentPlayerPrefs.Close();
 
     }
+
+    public void DeleteCurrentUser()
+    {
+        PlayerPrefsSetup playerprefssetup = new PlayerPrefsSetup();
+        playerprefssetup.DeletePlayer(user.currentUser);
+        playerprefssetup.Close();
+    }
 }

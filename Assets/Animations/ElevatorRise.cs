@@ -9,6 +9,7 @@ public class ElevatorRise : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _elevatorRise.SetBool("isElevatorRise", true);
+
     }
     // Start is called before the first frame update
     void Start()

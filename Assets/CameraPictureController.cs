@@ -19,6 +19,8 @@ public class CameraPictureController : MonoBehaviour
     public Transform pictureDisplayParent;
     private bool pictureInProgress;
     private List<Collider> collidersInRange = new List<Collider>(); // List to store colliders in range
+    public AudioClip soundClip;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class CameraPictureController : MonoBehaviour
 
         // Set initial X position
         initialXPosition = 8.392334e-05f; // Set the initial X position to 1.8
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TakePicture()
@@ -43,6 +47,17 @@ public class CameraPictureController : MonoBehaviour
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
 
         StartCoroutine(CaptureAndSave());
+
+        if (soundClip != null && audioSource != null)
+        {
+            Debug.Log("picture sound");
+            //audioSource.PlayOneShot(soundClip);
+            audioSource.Play();
+            
+            
+        }
+
+       
     }
 
     IEnumerator CaptureAndSave()
