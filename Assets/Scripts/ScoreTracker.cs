@@ -39,6 +39,7 @@ public class ScoreTracker : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Office" || SceneManager.GetActiveScene().name == "Tutorial")
         {
+            Debug.Log("GOT IT");
             warrantGrabbed = false;
             evidence = GameObject.FindGameObjectsWithTag("evidence");
             GameObject userMan = GameObject.Find("UserManager");
@@ -157,6 +158,7 @@ public class ScoreTracker : MonoBehaviour
         {
 
             PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
+            Debug.Log("Username: " + username);
             playerprefsplus.GetPlayerByName(username);
             if (playerprefsplus.HasKey("NumberOfOfficeRuns"))
             {
