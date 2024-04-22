@@ -11,8 +11,11 @@ public class CartController : MonoBehaviour
     public float rotationDampening = 5.0f;
     float initalCartYRotation;
 
+    private Rigidbody rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         grabInteractable = GetComponent<XRGrabInteractable>();
         //initialRotation = transform.rotation;
 
@@ -22,6 +25,7 @@ public class CartController : MonoBehaviour
 
     void OnGrab(SelectEnterEventArgs args)
     {
+        rb.isKinematic = false;
         // Optional: Save initial grab rotation if needed for more complex rotation handling
 
         interactor = args.interactorObject;
@@ -45,6 +49,7 @@ public class CartController : MonoBehaviour
 
     void OnRelease(SelectExitEventArgs args)
     {
+        rb.isKinematic = true;
         // Optional: Reset or adjust rotation on release if needed
         interactor = null;
 
@@ -71,6 +76,8 @@ public class CartController : MonoBehaviour
         }
     }
 
+
+
     void FixedUpdate()
     {
         if (grabInteractable.isSelected)
@@ -78,7 +85,7 @@ public class CartController : MonoBehaviour
 
             float newHandYRotation = interactor.transform.rotation.eulerAngles.y;
             float YRotation = (initalCartYRotation - (initialHandYRotation - newHandYRotation));
-    
+
             Quaternion newRotation = Quaternion.Euler(0, YRotation, 0);
 
             //transform.position = newPosition;

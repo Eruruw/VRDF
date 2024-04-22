@@ -9,8 +9,10 @@ public class ToggleInteractionMask : MonoBehaviour
 {
     public XRRayInteractor rayInteractor; // Assign the ray interactor
     public InteractionLayerMask interactionLayer; // Layer to switch to
-    public InputHelpers.Button toggleButton; // Button to use for toggling
     public InputActionProperty leftActivate;
+
+    public XRDirectInteractor leftDirectInteractor;
+    public XRDirectInteractor rightDirectInteractor;
 
     private bool buttonPressed;
 
@@ -44,14 +46,19 @@ public class ToggleInteractionMask : MonoBehaviour
 
     void ToggleMask()
     {
-        // Check the current mask and toggle accordingly
-        if (rayInteractor.interactionLayers == 0)
+        bool leftHandHasSelection = leftDirectInteractor.hasSelection;
+        bool rightHandHasSelection = rightDirectInteractor.hasSelection;
+        if (!leftHandHasSelection && !rightHandHasSelection)
         {
-            rayInteractor.interactionLayers = interactionLayer; // Set to the desired layer
-        }
-        else
-        {
-            rayInteractor.interactionLayers = 0; // Set back to "Nothing"
+            // Check the current mask and toggle accordingly
+            if (rayInteractor.interactionLayers == 0)
+            {
+                rayInteractor.interactionLayers = interactionLayer; // Set to the desired layer
+            }
+            else
+            {
+                rayInteractor.interactionLayers = 0; // Set back to "Nothing"
+            }
         }
     }
 }

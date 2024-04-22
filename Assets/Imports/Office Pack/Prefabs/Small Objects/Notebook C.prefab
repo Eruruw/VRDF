@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7881072036808958643}
   - component: {fileID: 3871322800414377982}
   - component: {fileID: 4697429844355014609}
+  - component: {fileID: 3406502732842748710}
+  - component: {fileID: 1225473142994637878}
   m_Layer: 0
   m_Name: Notebook C
   m_TagString: evidence
@@ -190,6 +192,33 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &3406502732842748710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285329494355235837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740221a93ca1a347a325cddcb0657fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desk: 
+  type: Documentary
+  picturetaken: 0
+--- !u!114 &1225473142994637878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285329494355235837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1705918012350152711
 GameObject:
   m_ObjectHideFlags: 0

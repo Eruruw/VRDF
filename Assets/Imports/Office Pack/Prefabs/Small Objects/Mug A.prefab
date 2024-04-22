@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3278605368549311397}
   - component: {fileID: 28659581995403568}
   - component: {fileID: 7156550588218472221}
+  - component: {fileID: 4995641982115105088}
   m_Layer: 0
   m_Name: Mug A
   m_TagString: Untagged
@@ -190,6 +191,18 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &4995641982115105088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077247149276456609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5728633262148391904
 GameObject:
   m_ObjectHideFlags: 0

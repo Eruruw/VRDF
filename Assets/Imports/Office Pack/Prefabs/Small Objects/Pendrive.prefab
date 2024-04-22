@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 9146568039447374675}
   - component: {fileID: 1272371882508585516}
   - component: {fileID: -7399298448930065138}
+  - component: {fileID: 363916703030457119}
   m_Layer: 0
   m_Name: Pendrive
   m_TagString: evidence
@@ -61,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 5216339833886338151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4848140346391389751}
@@ -238,6 +239,18 @@ MonoBehaviour:
   desk: 
   type: Digital
   picturetaken: 0
+--- !u!114 &363916703030457119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216339833886338151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5714741389977891768
 GameObject:
   m_ObjectHideFlags: 0

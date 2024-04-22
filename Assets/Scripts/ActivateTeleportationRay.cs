@@ -47,17 +47,17 @@ public class ActivateTeleportationRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isLeftRayHovering = leftRay.TryGetHitInfo(out Vector3 leftPos, out Vector3 leftNormal, out int leftNumber, out bool leftVaild);
+        //bool isLeftRayHovering = leftRay.TryGetHitInfo(out Vector3 leftPos, out Vector3 leftNormal, out int leftNumber, out bool leftVaild);
 
         bool isRightRayHovering = rightRay.TryGetHitInfo(out Vector3 rightPos, out Vector3 rightNormal, out int rightNumber, out bool rightVaild);
 
-        leftTeleportationRay.SetActive(isEnable && !isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
+        //leftTeleportationRay.SetActive(isEnable && !isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
         rightTeleportationRay.SetActive(isEnable && !isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
 
-        bool isLeftHandActive = lefthandInteractor.hasSelection;
+        //bool isLeftHandActive = lefthandInteractor.hasSelection;
         bool isRightHandActive = righthandInteractor.hasSelection;
 
-        leftUIRay.SetActive(!isLeftHandActive);
+        //leftUIRay.SetActive(!isLeftHandActive);
         rightUIRay.SetActive(!isRightHandActive);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 public class Load_Current_Player_Data : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class Load_Current_Player_Data : MonoBehaviour
     public ActivateTeleportationRay activateTeleportationRay;
     public TMP_Dropdown pauseSettingsMovementDropdown;
     public TMP_Dropdown mainMenuSettingsMovementDropdown;
+
+    public Slider mainMenuVolumeSlider;
+    public Slider pauseMenuVolumeSlider;
+
+    private VolumeController volumeController;
     private UserManager user;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +28,12 @@ public class Load_Current_Player_Data : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Office")
         {
             LoadCurrentPlayerData();
+        }
+
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            volumeController = player.GetComponent<VolumeController>();
         }
     }
 
@@ -49,6 +61,18 @@ public class Load_Current_Player_Data : MonoBehaviour
             activateTeleportationRay.SwitchLocomotion(0);
             pauseSettingsMovementDropdown.value = 0;
         }
+
+        if (currentPlayerPrefs.HasKey("Volume"))
+        {
+            float volume = (float)playerprefs["Volume"];
+            pauseMenuVolumeSlider.value = volume;
+            if (volumeController != null)
+            {
+                volumeController.SetVolume(volume);
+            }
+
+        }
+
         currentPlayerPrefs.Close();
     }
 
@@ -69,6 +93,18 @@ public class Load_Current_Player_Data : MonoBehaviour
             locomotionManager.SwitchLocomotion(0);
             activateTeleportationRay.SwitchLocomotion(0);
             mainMenuSettingsMovementDropdown.value = 0;
+        }
+
+        //load volume
+        if (currentPlayerPrefs.HasKey("Volume"))
+        {
+            float volume = (float)playerprefs["Volume"];
+            mainMenuVolumeSlider.value = volume;
+            if (volumeController != null)
+            {
+                volumeController.SetVolume(volume);
+            }
+
         }
         currentPlayerPrefs.Close();
     }

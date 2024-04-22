@@ -33,6 +33,7 @@ public class ScoreTracker : MonoBehaviour
     public int numberOfPicturesTaken { get; set; }
     private GameObject cartObject;
     private Transform cartTransform;
+    private bool done = false;
 
     void Start()
     {
@@ -81,56 +82,63 @@ public class ScoreTracker : MonoBehaviour
 
     public void TallyScores()
     {
-        foreach (Transform childTransform in cartTransform)
+        if (done == false)
         {
-            GameObject childObject = childTransform.gameObject;
-            if (childObject.CompareTag("Interactable"))
+            done = true;
+            foreach (Transform childTransform in cartTransform)
             {
-                Transform socketTransform = childTransform.Find("BagSocket");
-                if (socketTransform != null)
+                GameObject childObject = childTransform.gameObject;
+                if (childObject.CompareTag("Interactable"))
                 {
-                    GameObject socketObject = socketTransform.gameObject;
-                    BagSocket socket = socketObject.GetComponent<BagSocket>();
-                    if (socket.ID.desk == warrantDesk)
+                    Transform socketTransform = childTransform.Find("Bag Socket");
+                    if (socketTransform != null)
                     {
-                        if (socket.tagsList.Contains(socket.ID.type))
+                        GameObject socketObject = socketTransform.gameObject;
+                        BagSocket socket = socketObject.GetComponent<BagSocket>();
+                        if (socket.ID.desk == warrantDesk)
                         {
-                            evidenceScore++;
+                            if (socket.tagsList.Contains(socket.ID.type))
+                            {
+                                evidenceScore++;
+                            }
                         }
                     }
                 }
             }
-        } 
-        foreach (GameObject item in evidence)
-        {
-            EvidenceID ID = item.GetComponent<EvidenceID>();
-            if (ID.desk == warrantDesk)
+            foreach (GameObject item in evidence)
             {
-                if (tagsList.Contains(ID.type))
+                EvidenceID ID = item.GetComponent<EvidenceID>();
+                if (ID.desk == warrantDesk)
                 {
-                    if (ID.picturetaken == true)
+                    if (tagsList.Contains(ID.type))
                     {
-                        pictureScore++;
+                        if (ID.picturetaken == true)
+                        {
+                            pictureScore++;
+                        }
                     }
                 }
             }
+            overallScore = evidenceScore + pictureScore;
+            if (overallTotal > 0)
+                average = (overallScore / overallTotal) * 100;
+            else
+                average = 0f;
+            if (warrantGrabbed == false)
+                average = average / 2;
+            if (crimeCommitted)
+                average = 0f;
+            if (average >= 90)
+                grade = "A";
+            else if (average >= 80)
+                grade = "B";
+            else if (average >= 70)
+                grade = "C";
+            else if (average >= 60)
+                grade = "D";
+            else
+                grade = "F";
         }
-        overallScore = evidenceScore + pictureScore;
-        average = (overallScore / overallTotal) * 100;
-        if (warrantGrabbed == false)
-            average = average / 2;
-        if (crimeCommitted)
-            average = 0f;
-        if (average >= 90)
-            grade = "A";
-        else if (average >= 80)
-            grade = "B";
-        else if (average >= 70)
-            grade = "C";
-        else if (average >= 60)
-            grade = "D";
-        else
-            grade = "F";
     }
 
     public void UpdateStats()

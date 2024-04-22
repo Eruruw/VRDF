@@ -7,6 +7,9 @@ public class Save_Player_Data : MonoBehaviour
 {
     public TMP_Dropdown mainMenuMovementSelectDropdown;
     public TMP_Dropdown pauseMenuMovementSelectDropdown;
+
+    public Slider mainMenuVolumeSlider;
+    public Slider pauseMenuVolumeSlider;
     private UserManager user;
 
     // Start is called before the first frame update
@@ -41,6 +44,11 @@ public class Save_Player_Data : MonoBehaviour
                 currentPlayerPrefs.Set("ContinousMovementDefault", true);
             }
         }
+
+        if (mainMenuVolumeSlider != null)
+        {
+            currentPlayerPrefs.Set("Volume", mainMenuVolumeSlider.value);
+        }
         currentPlayerPrefs.Save();
         currentPlayerPrefs.Close();
     }
@@ -60,6 +68,11 @@ public class Save_Player_Data : MonoBehaviour
             {
                 currentPlayerPrefs.Set("ContinousMovementDefault", true);
             }
+        }
+
+        if (mainMenuVolumeSlider != null)
+        {
+            currentPlayerPrefs.Set("Volume", pauseMenuVolumeSlider.value);
         }
         currentPlayerPrefs.Save();
         currentPlayerPrefs.Close();

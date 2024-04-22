@@ -9,8 +9,8 @@ public class RevolverSound : MonoBehaviour
     public AudioSource ringing_sound;
     private XRGrabInteractable grabbable;
     private Rigidbody rb;
-    private Vector3 minVelocity = new Vector3(-1f, -1f, -1f);
-    private Vector3 maxVelocity = new Vector3(1f, 1f, 1f);
+    private Vector3 minVelocity = new Vector3(0f, 0f, 0f);
+    private Vector3 maxVelocity = new Vector3(20f, 5f, 20f);
     private Vector3 randomVelocity;
 
     void Start()
@@ -31,7 +31,7 @@ public class RevolverSound : MonoBehaviour
 
     IEnumerator PlayAfterDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         if (fire_sound != null)
         {
             fire_sound.Play();

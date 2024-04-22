@@ -14,9 +14,9 @@ public class Load_User_Data : MonoBehaviour
     public GameObject Create_User_Canvas;
     public LocomotionManager locomotionManager;
     public ActivateTeleportationRay activateTeleportationRay;
-    public TMP_Dropdown movementDropdown;
     private List<GameObject> createdButtonObjects = new List<GameObject>();
     private UserManager user;
+    private Load_Current_Player_Data loadcurrentplayerData;
 
     void Start()
     {
@@ -25,6 +25,11 @@ public class Load_User_Data : MonoBehaviour
         if (userMan != null)
         {
             user = userMan.GetComponent<UserManager>();
+        }
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            loadcurrentplayerData = player.GetComponent<Load_Current_Player_Data>();
         }
     }
 
@@ -97,6 +102,9 @@ public class Load_User_Data : MonoBehaviour
 
     public void LoadCurrentPLayerSettings()
     {
+        loadcurrentplayerData.LoadCurrentPlayerDataForMainMenu();
+
+        /*
         Debug.Log(Player_pref.CurrentPlayerName);
         PlayerPrefsPlus currentPlayerPrefs = new PlayerPrefsPlus(Player_pref.CurrentPlayerName);
         Dictionary<string, object> playerprefs = currentPlayerPrefs.Get();
@@ -113,6 +121,13 @@ public class Load_User_Data : MonoBehaviour
             movementDropdown.value = 0;
         }
         currentPlayerPrefs.Close();
+        */
+    }
 
+    public void DeleteCurrentUser()
+    {
+        PlayerPrefsSetup playerprefssetup = new PlayerPrefsSetup();
+        playerprefssetup.DeletePlayer(user.currentUser);
+        playerprefssetup.Close();
     }
 }

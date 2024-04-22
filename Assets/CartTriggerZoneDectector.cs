@@ -19,7 +19,13 @@ public class CartTriggerZoneDectector : MonoBehaviour
             {
                 other.transform.SetParent(this.transform);          // Parent to the cart
                 objectsInCart.Add(other.gameObject, other.transform.parent);
-                other.GetComponent<Rigidbody>().isKinematic = true; // make it kinematic to avoid physics forces acting on it while in the cart
+
+                Rigidbody rb = other.GetComponent<Rigidbody>(); // make it kinematic to avoid physics forces acting on it while in the cart
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                //StartCoroutine(MakeKinematicAfterDelay(other));
+
                 if (other.gameObject.name == "Bag" || other.gameObject.name == "Bag(Clone)")
                 { 
 
@@ -37,18 +43,60 @@ public class CartTriggerZoneDectector : MonoBehaviour
         }
     }
 
+
+    private IEnumerator MakeKinematicAfterDelay(Collider obj)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        if (obj != null)
+        {
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        if (objectsInCart.ContainsKey(other.gameObject) && other.GetComponent<XRGrabInteractable>().isSelected)
+        bool hasDirectInteractor = false;
+        bool hasRayInteractor = false;
+
+        XRGrabInteractable grab = other.GetComponent<XRGrabInteractable>();
+        if (grab != null)
         {
-            currentObjectOriginalParent = objectsInCart[other.gameObject];
-            currentGrabInteractable = other.GetComponent<XRGrabInteractable>();
-            if (currentGrabInteractable != null)
-            {   
-                //create listener to instansiate values after released
-                currentGrabInteractable.selectExited.AddListener(Released);
+            List<IXRSelectInteractor> interactors = grab.interactorsSelecting;
+            foreach (IXRSelectInteractor inter in interactors)
+            {
+                if (inter is XRDirectInteractor)
+                {
+                    hasDirectInteractor = true;
+                }
+                if (inter is XRRayInteractor)
+                {
+                    hasRayInteractor = true;
+                }
             }
-            objectsInCart.Remove(other.gameObject);
+        }
+
+
+        if (objectsInCart.ContainsKey(other.gameObject))
+        {
+            if (hasRayInteractor || hasDirectInteractor)
+            {
+                Debug.Log("left trigger " + other.gameObject);
+                currentObjectOriginalParent = objectsInCart[other.gameObject];
+                currentGrabInteractable = other.GetComponent<XRGrabInteractable>();
+                if (currentGrabInteractable != null)
+                {
+                    //create listener to instansiate values after released
+                    currentGrabInteractable.selectExited.AddListener(Released);
+                }
+                objectsInCart.Remove(other.gameObject);
+            }
         }
     }
 

@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 3288525829315768899}
   - component: {fileID: 1430815575281573359}
   - component: {fileID: 961894225285300502}
+  - component: {fileID: 8442586601680992356}
   m_Layer: 0
   m_Name: Pen D
   m_TagString: Untagged
@@ -305,3 +306,15 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &8442586601680992356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123034081895999870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

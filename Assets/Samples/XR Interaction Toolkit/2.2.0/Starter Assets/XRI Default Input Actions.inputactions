@@ -777,6 +777,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "IndexPauseMenu",
+                    "type": "Button",
+                    "id": "e0dc6120-6b47-44c1-8f27-573d4ec292c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -876,6 +885,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8e59b71-9635-4371-9628-ff90b68c3234",
+                    "path": "<ValveIndexController>/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IndexPauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

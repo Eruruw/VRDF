@@ -46,10 +46,19 @@ public class PausedMenuManager : MonoBehaviour
 
     public void Switch_To_Settings()
     {
+        int settingsDistance;
+        if (SceneManager.GetActiveScene().name == "Office")
+        {
+            settingsDistance = 1;
+        }
+        else
+        {
+            settingsDistance = 2;
+        }
         menu.SetActive(!menu.activeSelf);
 
         SettingsUI.SetActive(!SettingsUI.activeSelf);
-        SettingsUI.transform.position = head.position + new Vector3(head.forward.x, head.forward.y, head.forward.z).normalized * (2 * spawnDistance);
+        SettingsUI.transform.position = head.position + new Vector3(head.forward.x, head.forward.y, head.forward.z).normalized * (settingsDistance * spawnDistance);
         SettingsUI.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
         SettingsUI.transform.forward *= -1;
     }

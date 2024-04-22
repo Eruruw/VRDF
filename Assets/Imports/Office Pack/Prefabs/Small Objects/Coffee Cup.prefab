@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 785563688394248706}
   - component: {fileID: 990364811177079631}
   - component: {fileID: 396824011484463538}
+  - component: {fileID: 3786325599197857443}
   m_Layer: 0
   m_Name: Coffee Cup
   m_TagString: Untagged
@@ -190,6 +191,18 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &3786325599197857443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378636570789284720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5756319992030432801
 GameObject:
   m_ObjectHideFlags: 0

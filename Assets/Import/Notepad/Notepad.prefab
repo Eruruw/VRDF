@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9065095761618410167}
   - component: {fileID: 6654507326935252681}
   - component: {fileID: -5600136280320452946}
+  - component: {fileID: 7223027429745955126}
   m_Layer: 0
   m_Name: Notepad
   m_TagString: evidence
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 435462459121039827}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6391948258369348416}
@@ -205,6 +206,18 @@ MonoBehaviour:
   desk: 
   type: Documentary
   picturetaken: 0
+--- !u!114 &7223027429745955126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435462459121039827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1826375093653202372
 GameObject:
   m_ObjectHideFlags: 0
