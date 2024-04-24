@@ -9,6 +9,9 @@ public class Player_pref : MonoBehaviour
 
 {
     public TMP_InputField CreateUserInputField;
+    public TMP_InputField UserPasswordField;
+    public TMP_InputField PasswordVerifyField;
+
     public static PlayerPrefsPlus CurrentPlayer { get; set; }
     public static string CurrentPlayerName { get; set; }
     public GameObject Main_Menu_Canvas;
@@ -31,26 +34,32 @@ public class Player_pref : MonoBehaviour
     {
         if (CreateUserInputField != null && !string.IsNullOrEmpty(CreateUserInputField.text))
         {
-            // Validate the input using a regular expression
-            if (IsInputValid(CreateUserInputField.text))
+            if (UserPasswordField.text == PasswordVerifyField.text)
             {
-                
-                PlayerPrefsSetup playerprefssetup = new PlayerPrefsSetup();
-                playerprefssetup.AddPlayer(CreateUserInputField.text);
-                CurrentPlayerName = CreateUserInputField.text;
-                playerprefssetup.Close();
 
-                PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(CreateUserInputField.text);
-                playerprefsplus.SetDefaults();
-                playerprefsplus.Close();
-                New_Player_Screen.SetActive(false);
-                Main_Menu_Canvas.SetActive(true);
-                
 
-            }
-            else
-            {
-                Debug.Log("Invalid input! Only alphabetical characters are allowed.");
+                // Validate the input using a regular expression
+                if (IsInputValid(CreateUserInputField.text))
+                {
+
+                    PlayerPrefsSetup playerprefssetup = new PlayerPrefsSetup();
+                    playerprefssetup.AddPlayer(CreateUserInputField.text);
+                    CurrentPlayerName = CreateUserInputField.text;
+                    playerprefssetup.Close();
+
+                    PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(CreateUserInputField.text);
+                    playerprefsplus.SetDefaults();
+                    playerprefsplus.Set("Password", PasswordVerifyField.text);
+                    playerprefsplus.Close();
+                    New_Player_Screen.SetActive(false);
+                    Main_Menu_Canvas.SetActive(true);
+
+
+                }
+                else
+                {
+                    Debug.Log("Invalid input! Only alphabetical characters are allowed.");
+                }
             }
         }
         else

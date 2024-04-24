@@ -10,7 +10,7 @@ public class Load_User_Data : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform spawnLocation;
     public GameObject parentObject;
-    public GameObject Main_Menu_Canvas;
+    public GameObject Password_Check;
     public GameObject Create_User_Canvas;
     public LocomotionManager locomotionManager;
     public ActivateTeleportationRay activateTeleportationRay;
@@ -43,16 +43,17 @@ public class Load_User_Data : MonoBehaviour
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
         playerprefsplus_player[] players;
         int count = playerprefsplus.GetAllPlayers(out players);
-
+        ClearButtonObjects();
         foreach (playerprefsplus_player item in players)
         {
             if (!(item.Title == "Default Values"))
             {
                 string name = item.Title;
-                Debug.Log(name);
+               
 
                 GameObject buttonObject = Instantiate(buttonPrefab, parentObject.transform);
                 Button buttonComponent = buttonObject.GetComponent<Button>();
+                buttonObject.SetActive(true);
                 TextMeshProUGUI buttonText = buttonObject.GetComponentInChildren<TextMeshProUGUI>();
 
                 buttonText.text = name;
@@ -78,8 +79,7 @@ public class Load_User_Data : MonoBehaviour
     public void OnButtonClick(string playerName)
     {
         // Handle button click for the selected player (you can modify this method as needed)
-        Debug.Log("Button clicked for player: " + playerName);
-        Main_Menu_Canvas.SetActive(true);
+        Password_Check.SetActive(true);
         Create_User_Canvas.SetActive(false);
         CurrentPlayerText.text = playerName;
         user.currentUser = playerName;
