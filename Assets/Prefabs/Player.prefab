@@ -2560,7 +2560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1eb700150db463409ab9bc628ba8bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayInteractor: {fileID: 6908794055225338553}
+  leftRayInteractor: {fileID: 0}
+  rightRayInteractor: {fileID: 0}
   interactionLayer:
     m_Bits: 4
   leftActivate:
@@ -3255,7 +3256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1eb700150db463409ab9bc628ba8bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayInteractor: {fileID: 6908794055386851162}
+  leftRayInteractor: {fileID: 0}
+  rightRayInteractor: {fileID: 0}
   interactionLayer:
     m_Bits: 4
   leftActivate:

@@ -21,10 +21,7 @@ public class CartTriggerZoneDectector : MonoBehaviour
                 objectsInCart.Add(other.gameObject, other.transform.parent);
 
                 Rigidbody rb = other.GetComponent<Rigidbody>(); // make it kinematic to avoid physics forces acting on it while in the cart
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-                rb.isKinematic = true;
-                //StartCoroutine(MakeKinematicAfterDelay(other));
+                StartCoroutine(MakeKinematicAfterDelay(other));
 
                 if (other.gameObject.name == "Bag" || other.gameObject.name == "Bag(Clone)")
                 { 

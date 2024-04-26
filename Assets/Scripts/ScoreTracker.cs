@@ -34,6 +34,7 @@ public class ScoreTracker : MonoBehaviour
     private GameObject cartObject;
     private Transform cartTransform;
     private bool done = false;
+    private UserManager user;
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class ScoreTracker : MonoBehaviour
             warrantGrabbed = false;
             evidence = GameObject.FindGameObjectsWithTag("evidence");
             GameObject userMan = GameObject.Find("UserManager");
-            UserManager user = userMan.GetComponent<UserManager>();
+            user = userMan.GetComponent<UserManager>();
             username = user.currentUser;
             GameObject warrant = GameObject.FindWithTag("manager");
             manager = warrant.GetComponentInChildren<WarrantManager>();
@@ -149,13 +150,12 @@ public class ScoreTracker : MonoBehaviour
         warrantScoreText.text = $"Picked up Warrant?: {warrantGrabbed}";
         overallScoreText.text = $"Overall Score: {overallScore} / {overallTotal}";
         gradeText.text = $"Grade: {grade}";
-        //SaveScores();
     }
 
     public void SaveScores()
     {
         if (SceneManager.GetActiveScene().name == "Office")
-        {
+        { 
 
             PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
             Debug.Log("Username: " + username);

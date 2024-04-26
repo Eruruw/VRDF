@@ -1006,6 +1006,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desk B Dark Wood
       objectReference: {fileID: 0}
+    - target: {fileID: 3028548309732764384, guid: 91f7f68d913fa164cac7ecf6bcb030dc, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028548309732764384, guid: 91f7f68d913fa164cac7ecf6bcb030dc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3469488646288785744, guid: 91f7f68d913fa164cac7ecf6bcb030dc, type: 3}
       propertyPath: m_ReceiveShadows
       value: 1
@@ -1053,6 +1061,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2567181897890207907, guid: 91f7f68d913fa164cac7ecf6bcb030dc, type: 3}
   m_PrefabInstance: {fileID: 3956578597651942899}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2162626932775735274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2948633970280972825, guid: 91f7f68d913fa164cac7ecf6bcb030dc, type: 3}
+  m_PrefabInstance: {fileID: 3956578597651942899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2846510027649039444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162626932775735274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5773872, y: 0.0880667, z: 3.4926107}
+  m_Center: {x: 0.024306297, y: -0.039432943, z: -0.0110628605}
+--- !u!65 &5629536556914359878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162626932775735274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8458416, y: 0.06616235, z: 1.6045275}
+  m_Center: {x: -2.1605225, y: -0.027237177, z: -0.9560856}
+--- !u!65 &799638778316143286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162626932775735274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0179949, y: 0.985782, z: 0.10762403}
+  m_Center: {x: -0.0052429438, y: -0.5609644, z: 1.4008038}
+--- !u!65 &3027375726838733267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162626932775735274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8973329, y: 0.9638301, z: 1}
+  m_Center: {x: -2.8480315, y: -0.5466866, z: -0.87}
 --- !u!1001 &3956578598136306743
 PrefabInstance:
   m_ObjectHideFlags: 0

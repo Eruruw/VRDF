@@ -53,7 +53,7 @@ public class SceneController : MonoBehaviour
             float elapsedTime = Time.time - startTime;
             float remainingTime = loadingDelay - elapsedTime;
 
-            // Unity's load progress goes up to 0.9, so we scale it to 1 for the slider.
+            //Update sliderD
             float progress = Mathf.Clamp01(remainingTime / loadingDelay);
             loadingSlider.value = 1 - progress;
             if (remainingTime <= 0)
@@ -63,8 +63,6 @@ public class SceneController : MonoBehaviour
 
             yield return null; // Wait a frame before continuing the loop
         }
-
-        // Optional: actions to perform after the scene is fully loaded
     }
 
 

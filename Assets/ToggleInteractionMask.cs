@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 
 public class ToggleInteractionMask : MonoBehaviour
 {
-    public XRRayInteractor rayInteractor; // Assign the ray interactor
+    public XRRayInteractor leftRayInteractor; // Assign the ray interactor
+    public XRRayInteractor rightRayInteractor;
+
     public InteractionLayerMask interactionLayer; // Layer to switch to
     public InputActionProperty leftActivate;
 
@@ -46,18 +48,21 @@ public class ToggleInteractionMask : MonoBehaviour
 
     void ToggleMask()
     {
-        bool leftHandHasSelection = leftDirectInteractor.hasSelection;
-        bool rightHandHasSelection = rightDirectInteractor.hasSelection;
+        bool leftHandHasSelection = leftDirectInteractor.hasSelection || leftRayInteractor.hasSelection;
+        bool rightHandHasSelection = rightDirectInteractor.hasSelection || rightRayInteractor.hasSelection;
+
         if (!leftHandHasSelection && !rightHandHasSelection)
         {
             // Check the current mask and toggle accordingly
-            if (rayInteractor.interactionLayers == 0)
+            if (leftRayInteractor.interactionLayers == 0)
             {
-                rayInteractor.interactionLayers = interactionLayer; // Set to the desired layer
+                leftRayInteractor.interactionLayers = interactionLayer; // Set to the desired layer
+                rightRayInteractor.interactionLayers = interactionLayer; // Set to the desired layer
             }
             else
             {
-                rayInteractor.interactionLayers = 0; // Set back to "Nothing"
+                leftRayInteractor.interactionLayers = 0; // Set back to "Nothing"
+                rightRayInteractor.interactionLayers = 0;
             }
         }
     }

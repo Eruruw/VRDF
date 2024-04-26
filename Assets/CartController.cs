@@ -87,8 +87,6 @@ public class CartController : MonoBehaviour
             float YRotation = (initalCartYRotation - (initialHandYRotation - newHandYRotation));
 
             Quaternion newRotation = Quaternion.Euler(0, YRotation, 0);
-
-            //transform.position = newPosition;
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * rotationDampening);
         }
     }

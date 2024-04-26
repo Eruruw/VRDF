@@ -23,10 +23,14 @@ public class GameObjectPickup : MonoBehaviour
 
     public void Grab(SelectEnterEventArgs args)
     {
-        int newLayer = LayerMask.NameToLayer(selectionLayer);
+        if (args.interactorObject is not XRSocketInteractor)
+        {
 
-        originalLayer = this.gameObject.layer;
-        this.gameObject.layer = newLayer;
+            int newLayer = LayerMask.NameToLayer(selectionLayer);
+
+            originalLayer = this.gameObject.layer;
+            this.gameObject.layer = newLayer;
+        }
     }
 
     public void Drop(SelectExitEventArgs args)
