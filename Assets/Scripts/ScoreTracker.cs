@@ -52,8 +52,6 @@ public class ScoreTracker : MonoBehaviour
             tagsList = manager.validEvidenceList;
             cartObject = GameObject.FindWithTag("CartTrigger");
             cartTransform = cartObject.GetComponent<Transform>();
-            Debug.Log(warrantDesk);
-            Debug.Log(tagsList);
             
             StartCoroutine(Names());
         }
@@ -97,11 +95,14 @@ public class ScoreTracker : MonoBehaviour
                     {
                         GameObject socketObject = socketTransform.gameObject;
                         BagSocket socket = socketObject.GetComponent<BagSocket>();
-                        if (socket.ID.desk == warrantDesk)
+                        if (socket.ID != null)
                         {
-                            if (socket.tagsList.Contains(socket.ID.type))
+                            if (socket.ID.desk == warrantDesk)
                             {
-                                evidenceScore++;
+                                if (socket.tagsList.Contains(socket.ID.type))
+                                {
+                                    evidenceScore++;
+                                }
                             }
                         }
                     }

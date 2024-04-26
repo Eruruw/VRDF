@@ -3649,7 +3649,7 @@ PrefabInstance:
     - target: {fileID: 1889369625984616600, guid: 3b974a878db784845ab785ea177375e2, type: 3}
       propertyPath: showButton.m_Reference
       value: 
-      objectReference: {fileID: 2172841733190854989, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      objectReference: {fileID: 6200231435965607117, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 2426754420176860319, guid: 3b974a878db784845ab785ea177375e2, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.7071068
@@ -12340,9 +12340,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7d9c39bca8aeaa64192f5d7986ff27d3, type: 3}
   - {fileID: 8300000, guid: 7d9c39bca8aeaa64192f5d7986ff27d3, type: 3}
   - {fileID: 8300000, guid: 850d3da6cb01ed445bc1c443dd08724b, type: 3}
+  - {fileID: 8300000, guid: c84e1c7e3ed2dc54eba8a2f58a90342a, type: 3}
+  - {fileID: 8300000, guid: c84e1c7e3ed2dc54eba8a2f58a90342a, type: 3}
   - {fileID: 8300000, guid: fc57392c31244094a860546bc27f7b54, type: 3}
-  minDelay: 20
-  maxDelay: 60
+  minDelay: 60
+  maxDelay: 180
 --- !u!82 &1082690145
 AudioSource:
   m_ObjectHideFlags: 0

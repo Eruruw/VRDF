@@ -21,12 +21,31 @@ public class BagSocket : MonoBehaviour
 
     void Start()
     {
-        GameObject userManager = GameObject.Find("UserManager");
+        StartCoroutine(SetTags());
+        /*GameObject userManager = GameObject.Find("UserManager");
         if (userManager != null)
         {
             user = userManager.GetComponent<UserManager>();
         }
         
+        GameObject warrant = GameObject.FindWithTag("manager");
+        GameObject bags = GameObject.Find("Bags");
+        tracker = bags.GetComponent<ScoreTracker>();
+        socket = GetComponent<XRSocketInteractor>();
+        manager = warrant.GetComponentInChildren<WarrantManager>();
+        warrantDesk = manager.exactDesk;
+        tagsList = manager.validEvidenceList;*/
+    }
+
+    IEnumerator SetTags()
+    {
+        yield return new WaitForSeconds(.4f);
+        GameObject userManager = GameObject.Find("UserManager");
+        if (userManager != null)
+        {
+            user = userManager.GetComponent<UserManager>();
+        }
+
         GameObject warrant = GameObject.FindWithTag("manager");
         GameObject bags = GameObject.Find("Bags");
         tracker = bags.GetComponent<ScoreTracker>();
