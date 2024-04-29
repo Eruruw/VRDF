@@ -12,6 +12,7 @@ public class StatsLoader : MonoBehaviour
 
     public TextMeshProUGUI officeRatingText;
     public TextMeshProUGUI officeAttemptsText;
+    public TextMeshProUGUI evidenceScoreText;
 
     private UserManager userManager;
     private string user;
@@ -48,8 +49,13 @@ public class StatsLoader : MonoBehaviour
             if (playerprefsplus.HasKey("NumberOfOfficeRuns"))                       //check if player has required prefs
             {
                 int numOfOfficeRuns = (int)playerprefs["NumberOfOfficeRuns"];       //get number of runs for office
+                int evidenceScore = (int)playerprefs["EvidenceScore"];
+                int totalEvidenceScore = (int)playerprefs["TotalEvidence"];
+
                 totalScenariosText.text = $"Total Scenarios Completed: {numOfOfficeRuns}";
                 officeAttemptsText.text = numOfOfficeRuns.ToString();
+                evidenceScoreText.text = $"Total Evidence Gathered: {evidenceScore}/{totalEvidenceScore}";
+
 
                 if (numOfOfficeRuns <= 1)
                 {

@@ -167,6 +167,12 @@ public class ScoreTracker : MonoBehaviour
                 int prevNumOfRuns = (int)playerprefs["NumberOfOfficeRuns"]; //get number of runs for office
                 int updatedNumOfRuns = prevNumOfRuns + 1;
                 playerprefsplus.Set("NumberOfOfficeRuns", updatedNumOfRuns);
+
+                int prevTotalEvidence = (int)playerprefs["TotalEvidence"];
+                int prevEvidenceScore = (int)playerprefs["EvidenceScore"];
+
+                playerprefsplus.Set("TotalEvidence", prevTotalEvidence + evidenceTotal);
+                playerprefsplus.Set("EvidenceScore", prevEvidenceScore + evidenceScore);
                 if (prevNumOfRuns == 0)
                 {
                     playerprefsplus.Set("OfficeScores", average);

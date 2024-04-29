@@ -16,7 +16,10 @@ public class ToggleInteractionMask : MonoBehaviour
     public XRDirectInteractor leftDirectInteractor;
     public XRDirectInteractor rightDirectInteractor;
 
+
     private bool buttonPressed;
+
+
 
     private void OnEnable()
     {
@@ -51,8 +54,10 @@ public class ToggleInteractionMask : MonoBehaviour
         bool leftHandHasSelection = leftDirectInteractor.hasSelection || leftRayInteractor.hasSelection;
         bool rightHandHasSelection = rightDirectInteractor.hasSelection || rightRayInteractor.hasSelection;
 
+
         if (!leftHandHasSelection && !rightHandHasSelection)
         {
+            //Debug.Log("yes");
             // Check the current mask and toggle accordingly
             if (leftRayInteractor.interactionLayers == 0)
             {

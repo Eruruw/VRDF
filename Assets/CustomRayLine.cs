@@ -5,13 +5,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class CustomRayLine : MonoBehaviour
 {
-    public XRRayInteractor ray;
+    private XRRayInteractor ray;
     public float minimumDistance = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //ray = GetComponent<XRRayInteractor>();
+        ray = GetComponent<XRRayInteractor>();
     }
 
     // Update is called once per frame
