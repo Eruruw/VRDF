@@ -9,6 +9,7 @@ public class Player_pref : MonoBehaviour
 
 {
     public TMP_InputField CreateUserInputField;
+    public TMP_InputField EmailInputField;
     public TMP_InputField UserPasswordField;
     public TMP_InputField PasswordVerifyField;
 
@@ -49,6 +50,7 @@ public class Player_pref : MonoBehaviour
 
                     PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(CreateUserInputField.text);
                     playerprefsplus.SetDefaults();
+                    playerprefsplus.Set("Email", EmailInputField.text);
                     playerprefsplus.Set("Password", PasswordVerifyField.text);
                     playerprefsplus.Close();
                     New_Player_Screen.SetActive(false);

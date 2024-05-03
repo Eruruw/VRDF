@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class CameraPictureController : MonoBehaviour
 {
     private UserManager user;
@@ -70,7 +70,7 @@ public class CameraPictureController : MonoBehaviour
         texture.Apply();
 
         RenderTexture.active = currentRT;
-        string directoryPath = "/Captures" + "/" + user.currentUser;
+        string directoryPath = "/Captures/" + user.currentUser;
         string fulldirectoryPath = Application.temporaryCachePath + directoryPath;
         System.IO.Directory.CreateDirectory(fulldirectoryPath);
 
@@ -80,7 +80,10 @@ public class CameraPictureController : MonoBehaviour
         scoreTracker.numberOfPicturesTaken += 1;
 
         // Display the captured picture with adjusted Y position
-        DisplayPicture(filePath);
+        if (SceneManager.GetActiveScene().name == "Office" || SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            DisplayPicture(filePath);
+        }
         pictureInProgress = false;
 
         // Scan all colliders in range

@@ -8,40 +8,67 @@ using MailKit.Security;
 
 public class Emailer : MonoBehaviour
 {
-    public void SendEmail()
+    private UserManager user;
+    private void Start()
     {
+        GameObject userMan = GameObject.Find("UserManager");
+        if (userMan != null)
+        {
+            user = userMan.GetComponent<UserManager>();
+        }
+    }
+    public void SendUserDataEmail()
+    {
+        StartCoroutine(SendUserData());
+    }
+
+    IEnumerator SendUserData()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        //Get current users name then email 
+        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
+        string userEmail = (string)playerprefsplus.Get("Email");
         var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("HH - Email Sender", "YOUR_SENDER_EMAIL_USERNAME"));
-        message.To.Add(new MailboxAddress("HH - Email Receiver", "YOUR_RECEIVER_EMAIL_USERNAME"));
-        message.Subject = "HH Help Email Subject";
+        playerprefsplus.Close();
+
+
+        message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));
+        message.To.Add(new MailboxAddress(user.currentUser, userEmail));
+        message.Subject = "VRDF Data Export";
 
         var multipartBody = new Multipart("mixed");
         {
             var textPart = new TextPart("plain")
             {
-                Text = @"Message Text here!"
+                Text = @"Here are your pictures taken in the Scenerio"
             };
             multipartBody.Add(textPart);
 
-            string attachmentPath = "";
-            var attachmentPart = new MimePart("image/png")
+            string directoryPath = "/Captures/" + user.currentUser;
+            string fulldirectoryPath = Application.temporaryCachePath + directoryPath;
+            if (Directory.Exists(fulldirectoryPath))
             {
-                Content = new MimeContent(File.OpenRead(attachmentPath), ContentEncoding.Default),
-                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                ContentTransferEncoding = ContentEncoding.Base64,
-                FileName = Path.GetFileName(attachmentPath)
-            };
-            multipartBody.Add(attachmentPart);
+                // Get all files in the folder
+                string[] files = Directory.GetFiles(fulldirectoryPath);
 
-            string logPath = "";
-            var logPart = new MimePart("text/plain")
+                // Loop through each file
+                foreach (string filePath in files)
+                {
+                    var pictures = new MimePart("image/png")
+                    {
+                        Content = new MimeContent(File.OpenRead(filePath), ContentEncoding.Default),
+                        ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                        ContentTransferEncoding = ContentEncoding.Base64,
+                        FileName = Path.GetFileName(filePath)
+                    };
+                    multipartBody.Add(pictures);
+                }
+            }
+            else
             {
-                Content = new MimeContent(File.OpenRead(logPath), ContentEncoding.Default),
-                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                ContentTransferEncoding = ContentEncoding.Base64,
-                FileName = Path.GetFileName(logPath)
-            };
-            multipartBody.Add(logPart);
+                Debug.Log("Directory does not exist.");
+            }
         }
         message.Body = multipartBody;
 
@@ -51,12 +78,11 @@ public class Emailer : MonoBehaviour
             // Do not use Gmail
             client.Connect("smtp-mail.outlook.com", 587, false);
 
-            client.AuthenticationMechanisms.Remove("XOAUTH2");
-            //client.Authenticate(YOUR_SENDER_EMAIL_USERNAME, YOUR_SENDER_EMAIL_PASSWORD);
+            //client.AuthenticationMechanisms.Remove("XOAUTH2");
+            client.Authenticate("vrdf443@outlook.com", "JNPS42024vrdf#");
             client.Send(message);
             client.Disconnect(true);
             Debug.Log("Sent email");
         }
-    
     }
 }
