@@ -22,6 +22,7 @@ public class ComputerCaseController : MonoBehaviour
     {
         // Unlock the object when grabbed
         rigidBody.isKinematic = false;
+        grabInteractable.selectExited.RemoveAllListeners();
     }
 
 

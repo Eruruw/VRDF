@@ -50,11 +50,7 @@ public class CameraPictureController : MonoBehaviour
 
         if (soundClip != null && audioSource != null)
         {
-            Debug.Log("picture sound");
-            //audioSource.PlayOneShot(soundClip);
-            audioSource.Play();
-            
-            
+            audioSource.Play(); 
         }
 
        
@@ -81,7 +77,6 @@ public class CameraPictureController : MonoBehaviour
         string filePath = fulldirectoryPath + "/Capture" + pictureNumber + ".png";
         System.IO.File.WriteAllBytes(filePath, texture.EncodeToPNG());
 
-        Debug.Log("Captured Image Saved to: " + filePath);
         scoreTracker.numberOfPicturesTaken += 1;
 
         // Display the captured picture with adjusted Y position
@@ -96,7 +91,7 @@ public class CameraPictureController : MonoBehaviour
             if (evidenceID != null)
             {
                 evidenceID.picturetaken = true;
-                Debug.Log("Evidence scanned: " + collider.gameObject.name);
+                //Debug.Log("Evidence scanned: " + collider.gameObject.name);
             }
         }
         
@@ -129,7 +124,7 @@ public class CameraPictureController : MonoBehaviour
         rt.localPosition = new Vector3(initialXPosition, newYPosition, 75.61248f);
 
         // Force the scale to be 0.5630413 for all dimensions (X, Y, Z)
-        rt.localScale = new Vector3(0.5784238f, 0.5784238f, 0.5784238f);
+        rt.localScale = new Vector3(1.0584238f, 0.5784238f, 0.5784238f);
     }
 
     public void OnTriggerStay(Collider other)
