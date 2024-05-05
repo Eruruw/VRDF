@@ -14,7 +14,7 @@ public class WarrantManager : MonoBehaviour
     private string exactAddress { get; set; }
     public string exactDesk { get; private set; }
     public string typeOfCrime { get; private set; }
-    public List<string> validEvidenceList { get; private set; }
+    public List<string> validEvidenceList { get; set; }
     private string typeOfEvidence { get; set; }
     private string day { get; set; }
     private string month { get; set; }

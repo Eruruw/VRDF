@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEvidence : MonoBehaviour
+public class SpawnEvidenceLite : MonoBehaviour
 {
     public GameObject[] prefabsToSpawn; // Array of prefabs to choose from
-    public int maxInstances = 8; // Maximum number of instances to spawn
-    public int minInstances = 2;
     public float spawnChance = 0.4f; // Chance of spawning an instance
     private int currentInstances = 0;
     private BoxCollider triggerCollider; // Reference to the BoxCollider component
     private List<int> spawnedPrefabIndices = new List<int>(); // List to keep track of spawned prefab indices
-    private bool firstSpawn = true;
-    private EvidenceID ID;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +19,7 @@ public class SpawnEvidence : MonoBehaviour
 
     private void CreateInstances()
     {
-        for (int i = 0; i < maxInstances; i++) // Iterate until reaching maximum instances
-        {
-            if (currentInstances < minInstances || Random.value < spawnChance) // Check if spawn chance succeeds or min instances not reached
+            if (Random.value < spawnChance) // Check if spawn chance succeeds or min instances not reached
             {
                 if (prefabsToSpawn.Length > 0) // Check if there are prefabs to spawn
                 {
@@ -35,18 +29,6 @@ public class SpawnEvidence : MonoBehaviour
                     {
                         GameObject prefabToSpawn = prefabsToSpawn[randomPrefabIndex];
 
-                        while (firstSpawn)
-                        {
-                            ID = prefabToSpawn.GetComponent<EvidenceID>();
-                            if (ID.type == "Digital")
-                                firstSpawn = false;
-                            else
-                            {
-                                randomPrefabIndex = GetRandomPrefabIndex();
-                                prefabToSpawn = prefabsToSpawn[randomPrefabIndex];
-                            }
-                        }
-
                         // Spawn the chosen prefab
                         SpawnObject(prefabToSpawn);
 
@@ -54,7 +36,6 @@ public class SpawnEvidence : MonoBehaviour
                     }
                 }
             }
-        }
     }
 
     private int GetRandomPrefabIndex()
@@ -93,28 +74,9 @@ public class SpawnEvidence : MonoBehaviour
     private void SpawnObject(GameObject prefab)
     {
         // Random position within the trigger area
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(transform.position.x - triggerCollider.size.x / 2, transform.position.x + triggerCollider.size.x / 2),
-            transform.position.y,
-            Random.Range(transform.position.z - triggerCollider.size.z / 2, transform.position.z + triggerCollider.size.z / 2)
-        );
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         // Instantiate the prefab at the random position
         GameObject spawnedObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
-
-        // Start a coroutine to apply rotation after a short delay
-        StartCoroutine(ApplyRotationAfterDelay(spawnedObject));
-    }
-
-    private IEnumerator ApplyRotationAfterDelay(GameObject obj)
-    {
-        // Wait for a short delay
-        yield return new WaitForSeconds(0.2f); // Adjust the delay time as needed
-
-        // Random rotation
-        Quaternion spawnRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
-
-        // Set the rotation of the instantiated object
-        obj.transform.rotation = spawnRotation;
     }
 }

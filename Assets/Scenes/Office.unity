@@ -2518,7 +2518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55.22, y: 21.3}
+  m_AnchoredPosition: {x: 55.22, y: 1.1}
   m_SizeDelta: {x: 250.08, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224150042
@@ -2847,7 +2847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46, y: 53.3}
+  m_AnchoredPosition: {x: 46, y: 29.8}
   m_SizeDelta: {x: 288.63, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246084874
@@ -4088,6 +4088,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
+      propertyPath: grade
+      value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644870204510448592, guid: 3b974a878db784845ab785ea177375e2, type: 3}
       propertyPath: gradeText
       value: 
       objectReference: {fileID: 1290396568}
@@ -4537,7 +4541,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1711341601}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &369871353
 Rigidbody:
@@ -8974,7 +8978,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2028328652}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &818793913
 Rigidbody:
@@ -14232,8 +14236,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605960967}
   m_HandleRect: {fileID: 605960966}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.99999976
+  m_Value: 1
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14753,7 +14757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.6, y: -13.2}
+  m_AnchoredPosition: {x: -34, y: -30.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290396568
@@ -19829,6 +19833,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2025583739}
     m_Modifications:
+    - target: {fileID: 7333099978290158, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 1683124678863978556, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -19843,7 +19851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3491806156140513885, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3956578599324451760, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_Enabled
@@ -19860,6 +19868,10 @@ PrefabInstance:
     - target: {fileID: 6298285572392836849, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_text
       value: Elijah Patel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933548768869453348, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8264721356542591351, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder
@@ -22426,7 +22438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.97, y: 38.7}
+  m_AnchoredPosition: {x: 20.97, y: 15.4}
   m_SizeDelta: {x: 393.24, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989630877
@@ -22896,6 +22908,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.954
       objectReference: {fileID: 0}
+    - target: {fileID: 7333099978290158, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 799638778316143286, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -22930,7 +22946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3491806156140513885, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3956578599324451760, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_Enabled
@@ -22955,6 +22971,10 @@ PrefabInstance:
     - target: {fileID: 6298285572392836849, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_text
       value: Brandon Rogers
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933548768869453348, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8264721356542591351, guid: 732a724daba9a9d4b99a7ee9d2aa3434, type: 3}
       propertyPath: m_RootOrder
