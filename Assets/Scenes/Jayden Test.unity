@@ -1567,7 +1567,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 511466892}
         m_TargetAssemblyTypeName: Emailer, Assembly-CSharp
-        m_MethodName: SendEmail
+        m_MethodName: SendAllUserDataEmail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

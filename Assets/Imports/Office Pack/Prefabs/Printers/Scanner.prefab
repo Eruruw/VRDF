@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3629688620689078982}
   - component: {fileID: 7407162333915422955}
   - component: {fileID: -5602969159595371821}
+  - component: {fileID: 3687665193577299477}
   m_Layer: 0
   m_Name: Scanner
   m_TagString: evidence
@@ -320,3 +321,15 @@ MonoBehaviour:
   desk: 
   type: Digital
   picturetaken: 0
+--- !u!114 &3687665193577299477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908579888291295144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2def21dec6d2b4ebb1eb6e26ee6898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

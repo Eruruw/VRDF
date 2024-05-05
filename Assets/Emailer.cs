@@ -5,10 +5,14 @@ using MimeKit;
 using System.IO;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using System.Threading.Tasks;
 
 public class Emailer : MonoBehaviour
 {
     private UserManager user;
+    private List<string[]> playerData = new List<string[]>();
+    private string tempCachePath;
+
     private void Start()
     {
         GameObject userMan = GameObject.Find("UserManager");
@@ -16,23 +20,133 @@ public class Emailer : MonoBehaviour
         {
             user = userMan.GetComponent<UserManager>();
         }
-    }
-    public void SendUserDataEmail()
-    {
-        StartCoroutine(SendUserData());
+        tempCachePath = Application.temporaryCachePath;
     }
 
-    IEnumerator SendUserData()
+    public void CreateCSV()
     {
-        yield return new WaitForSeconds(0.1f);
+        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
+        playerprefsplus_player[] players;
+        playerprefsplus.GetAllPlayers(out players);
+        string[] csvTitles = new string[] { "Name", "Number Of Office Attempts", "BestOfficeScore", "AverageOfficeScore", "Total Possible Evidence", "Total Gathered Evidence", "Password" };
+        playerData.Add(csvTitles);
+        foreach (playerprefsplus_player p in players)
+        {
+            if (p.Title != "Default Values")
+            {
+                playerprefsplus.GetPlayerByName(p.Title);
+                Dictionary<string, object> playerprefs = playerprefsplus.Get();
+
+                //Get all values
+                string name = p.Title;
+                int numOfOfficeRuns = (int)playerprefs["NumberOfOfficeRuns"]; 
+                float bestOfficeScore = (float)playerprefs["BestOfficeScore"];
+                float averageOfficeScore = (float)playerprefs["AverageOfficeScore"];
+                string password = (string)playerprefs["Password"];
+                int totalEvidence = (int)playerprefs["TotalEvidence"];
+                int evidenceScore = (int)playerprefs["EvidenceScore"];
+
+                string[] tempPlayerData = new string[] {name, numOfOfficeRuns.ToString(), bestOfficeScore.ToString(), averageOfficeScore.ToString(), totalEvidence.ToString(), evidenceScore.ToString(), password};
+                playerData.Add(tempPlayerData);
+            }
+        }
+        playerprefsplus.Close();
+        string filePath = Application.temporaryCachePath + "/PlayerData.csv";
+        WriteCsv(playerData, filePath);
+        Debug.Log("CSV Created");
+    }
+
+    public static void WriteCsv(List<string[]> data, string filePath)
+    {
+        using (StreamWriter file = new StreamWriter(filePath))
+        {
+            foreach (var row in data)
+            {
+                string line = string.Join(",", row);
+                file.WriteLine(line);
+            }
+        }
+    }
+
+    public void SendAllUserDataEmail()
+    {
+        CreateCSV();
+        Task.Run(() => SendAllUserData())
+                    .ContinueWith(task =>
+                    {
+                        if (task.Exception != null)
+                            Debug.LogError("Failed to send email: " + task.Exception);
+                        else
+                            Debug.Log("Email sent successfully!");
+                    }, TaskScheduler.FromCurrentSynchronizationContext()); // Ensure Unity context for logging
+    }
+
+    public async Task SendAllUserData()
+    {
+        await Task.Delay(1);
+
+
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));
+        message.To.Add(new MailboxAddress("Professor", "jaydented101@gmail.com"));
+        message.Subject = "VRDF Data Export";
+
+        var multipartBody = new Multipart("mixed");
+        {
+            var textPart = new TextPart("plain")
+            {
+                Text = @"Here are all of your player's Data"
+            };
+            multipartBody.Add(textPart);
+
+            string filePath = tempCachePath + "/PlayerData.csv";
+            var csvPart = new MimePart("text", "csv")
+            {
+                Content = new MimeContent(File.OpenRead(filePath), ContentEncoding.Default),
+                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                ContentTransferEncoding = ContentEncoding.Base64,
+                FileName = Path.GetFileName(filePath)
+            };
+            multipartBody.Add(csvPart);
+        }
+        message.Body = multipartBody;
+
+        using (var client = new SmtpClient())
+        {
+            // This section must be changed based on your sender's email host
+            // Do not use Gmail
+            client.Connect("smtp-mail.outlook.com", 587, false);
+
+            //client.AuthenticationMechanisms.Remove("XOAUTH2");
+            client.Authenticate("vrdf443@outlook.com", "JNPS42024vrdf#");
+            client.Send(message);
+            client.Disconnect(true);
+        }
+
+    }
+
+    public void SendUserDataEmail()
+    {
+        Task.Run(() => SendUserData())
+                .ContinueWith(task =>
+                {
+                    if (task.Exception != null)
+                        Debug.LogError("Failed to send email: " + task.Exception);
+                    else
+                        Debug.Log("Email sent successfully!");
+                }, TaskScheduler.FromCurrentSynchronizationContext()); // Ensure Unity context for logging
+    }
+
+    public async Task SendUserData()
+    {
+        await Task.Delay(1);
 
         //Get current users name then email 
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
         string userEmail = (string)playerprefsplus.Get("Email");
-        var message = new MimeMessage();
         playerprefsplus.Close();
 
-
+        var message = new MimeMessage();
         message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));
         message.To.Add(new MailboxAddress(user.currentUser, userEmail));
         message.Subject = "VRDF Data Export";
@@ -46,7 +160,7 @@ public class Emailer : MonoBehaviour
             multipartBody.Add(textPart);
 
             string directoryPath = "/Captures/" + user.currentUser;
-            string fulldirectoryPath = Application.temporaryCachePath + directoryPath;
+            string fulldirectoryPath = tempCachePath + directoryPath;
             if (Directory.Exists(fulldirectoryPath))
             {
                 // Get all files in the folder
