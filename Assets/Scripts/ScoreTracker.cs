@@ -12,10 +12,16 @@ public class ScoreTracker : MonoBehaviour
     public int pictureScore;
     public int overallScore;
     public int evidenceTotal;
+    public int digitalScore;
+    public int digitalTotal;
+    public int documentaryScore;
+    public int documentaryTotal;
+    public int personalScore;
+    public int personalTotal;
     public int pictureTotal;
     public int overallTotal;
     public float average;
-    public string grade;
+    public string grade = "F";
     public TextMeshProUGUI evidenceScoreText;
     public TextMeshProUGUI pictureScoreText;
     public TextMeshProUGUI warrantScoreText;
@@ -40,7 +46,6 @@ public class ScoreTracker : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Office" || SceneManager.GetActiveScene().name == "Tutorial")
         {
-            Debug.Log("GOT IT");
             warrantGrabbed = false;
             evidence = GameObject.FindGameObjectsWithTag("evidence");
             GameObject userMan = GameObject.Find("UserManager");
@@ -70,6 +75,12 @@ public class ScoreTracker : MonoBehaviour
                     evidenceTotal++;
                     pictureTotal++;
                     overallTotal = evidenceTotal + pictureTotal;
+                    if (ID.type == "Digital")
+                        digitalTotal++;
+                    if (ID.type == "Documentary")
+                        documentaryTotal++;
+                    if (ID.type == "Personal")
+                        personalTotal++;
                 }
             }
         }
@@ -102,6 +113,12 @@ public class ScoreTracker : MonoBehaviour
                                 if (socket.tagsList.Contains(socket.ID.type))
                                 {
                                     evidenceScore++;
+                                    if (socket.ID.type == "Digital")
+                                        digitalScore++;
+                                    if (socket.ID.type == "Documentary")
+                                        documentaryScore++;
+                                    if (socket.ID.type == "Personal")
+                                        personalScore++;
                                 }
                             }
                         }
@@ -124,29 +141,40 @@ public class ScoreTracker : MonoBehaviour
             }
             overallScore = evidenceScore + pictureScore;
             if (overallTotal > 0)
-                average = (overallScore / overallTotal) * 100;
+                average = ((float)overallScore / (float)overallTotal) * 100f;
             else
                 average = 0f;
-            if (warrantGrabbed == false)
-                average = average / 2;
+            //if (warrantGrabbed == false)
+            //    average = average / 2;
             if (crimeCommitted)
                 average = 0f;
-            if (average >= 90)
+            if (average >= 90f)
                 grade = "A";
-            else if (average >= 80)
+            if (average >= 75f && average < 90f)
                 grade = "B";
-            else if (average >= 70)
+            if (average >= 60f && average < 75f)
                 grade = "C";
-            else if (average >= 60)
+            if (average >= 50f && average < 60f)
                 grade = "D";
-            else
-                grade = "F";
         }
     }
 
     public void UpdateStats()
     {
-        evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}";
+        if (digitalTotal != 0 && documentaryTotal != 0 && personalTotal != 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}";
+        if (digitalTotal != 0 && documentaryTotal != 0 && personalTotal == 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}";
+        if (digitalTotal != 0 && documentaryTotal == 0 && personalTotal == 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}";
+        if (digitalTotal != 0 && documentaryTotal == 0 && personalTotal != 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nPersonal: {personalScore} / {personalTotal}";
+        if (digitalTotal == 0 && documentaryTotal != 0 && personalTotal != 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}";
+        if (digitalTotal == 0 && documentaryTotal != 0 && personalTotal == 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}";
+        if (digitalTotal == 0 && documentaryTotal == 0 && personalTotal != 0)
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nPersonal: {personalScore} / {personalTotal}";
         pictureScoreText.text = $"Picture Score: {pictureScore} / {pictureTotal}";
         warrantScoreText.text = $"Picked up Warrant?: {warrantGrabbed}";
         overallScoreText.text = $"Overall Score: {overallScore} / {overallTotal}";
