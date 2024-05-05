@@ -13,15 +13,23 @@ public class Player_pref : MonoBehaviour
     public TMP_InputField UserPasswordField;
     public TMP_InputField PasswordVerifyField;
 
+    public TMP_InputField emailAddressField;
+    public TMP_InputField confirmEmailAddressField;
+
     public static PlayerPrefsPlus CurrentPlayer { get; set; }
     public static string CurrentPlayerName { get; set; }
     public GameObject Main_Menu_Canvas;
     public GameObject New_Player_Screen;
+    private UserManager user;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject userMan = GameObject.Find("UserManager");
+        if (userMan != null)
+        {
+            user = userMan.GetComponent<UserManager>();
+        }
     }
 
     bool IsInputValid(string input)
@@ -29,6 +37,16 @@ public class Player_pref : MonoBehaviour
         // Use a regular expression to check if the input contains only alphabetical characters
         // Adjust the regular expression pattern based on your validation criteria
         return Regex.IsMatch(input, "^[a-zA-Z]+$");
+    }
+
+    public void SetEmail()
+    {
+        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
+
+        if (emailAddressField.text == confirmEmailAddressField.text)
+        {
+            playerprefsplus.Set("Email", emailAddressField.text);
+        }
     }
 
     public void CreateUser()

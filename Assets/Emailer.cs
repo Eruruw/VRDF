@@ -13,6 +13,8 @@ public class Emailer : MonoBehaviour
     private List<string[]> playerData = new List<string[]>();
     private string tempCachePath;
 
+    private string adminEmail;
+    private string userEmail;
     private void Start()
     {
         GameObject userMan = GameObject.Find("UserManager");
@@ -21,6 +23,7 @@ public class Emailer : MonoBehaviour
             user = userMan.GetComponent<UserManager>();
         }
         tempCachePath = Application.temporaryCachePath;
+
     }
 
     public void CreateCSV()
@@ -70,6 +73,10 @@ public class Emailer : MonoBehaviour
 
     public void SendAllUserDataEmail()
     {
+        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus("Admin");
+        adminEmail = (string)playerprefsplus.Get("Email");
+        playerprefsplus.Close();
+
         CreateCSV();
         Task.Run(() => SendAllUserData())
                     .ContinueWith(task =>
@@ -86,47 +93,55 @@ public class Emailer : MonoBehaviour
         await Task.Delay(1);
 
 
-        var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));
-        message.To.Add(new MailboxAddress("Professor", "jaydented101@gmail.com"));
-        message.Subject = "VRDF Data Export";
 
-        var multipartBody = new Multipart("mixed");
+        if (adminEmail != "")
         {
-            var textPart = new TextPart("plain")
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));
+            message.To.Add(new MailboxAddress("Professor", adminEmail));
+            message.Subject = "VRDF Data Export";
+
+            var multipartBody = new Multipart("mixed");
             {
-                Text = @"Here are all of your player's Data"
-            };
-            multipartBody.Add(textPart);
+                var textPart = new TextPart("plain")
+                {
+                    Text = @"Here are all of your player's Data"
+                };
+                multipartBody.Add(textPart);
 
-            string filePath = tempCachePath + "/PlayerData.csv";
-            var csvPart = new MimePart("text", "csv")
+                string filePath = tempCachePath + "/PlayerData.csv";
+                var csvPart = new MimePart("text", "csv")
+                {
+                    Content = new MimeContent(File.OpenRead(filePath), ContentEncoding.Default),
+                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                    ContentTransferEncoding = ContentEncoding.Base64,
+                    FileName = Path.GetFileName(filePath)
+                };
+                multipartBody.Add(csvPart);
+            }
+            message.Body = multipartBody;
+
+            using (var client = new SmtpClient())
             {
-                Content = new MimeContent(File.OpenRead(filePath), ContentEncoding.Default),
-                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                ContentTransferEncoding = ContentEncoding.Base64,
-                FileName = Path.GetFileName(filePath)
-            };
-            multipartBody.Add(csvPart);
+                // This section must be changed based on your sender's email host
+                // Do not use Gmail
+                client.Connect("smtp-mail.outlook.com", 587, false);
+
+                //client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate("vrdf443@outlook.com", "JNPS42024vrdf#");
+                client.Send(message);
+                client.Disconnect(true);
+            }
         }
-        message.Body = multipartBody;
-
-        using (var client = new SmtpClient())
-        {
-            // This section must be changed based on your sender's email host
-            // Do not use Gmail
-            client.Connect("smtp-mail.outlook.com", 587, false);
-
-            //client.AuthenticationMechanisms.Remove("XOAUTH2");
-            client.Authenticate("vrdf443@outlook.com", "JNPS42024vrdf#");
-            client.Send(message);
-            client.Disconnect(true);
-        }
-
     }
 
     public void SendUserDataEmail()
     {
+
+        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
+        userEmail = (string)playerprefsplus.Get("Email");
+        playerprefsplus.Close();
+
         Task.Run(() => SendUserData())
                 .ContinueWith(task =>
                 {
@@ -141,10 +156,6 @@ public class Emailer : MonoBehaviour
     {
         await Task.Delay(1);
 
-        //Get current users name then email 
-        PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
-        string userEmail = (string)playerprefsplus.Get("Email");
-        playerprefsplus.Close();
 
         var message = new MimeMessage();
         message.From.Add(new MailboxAddress("VRDF", "vrdf443@outlook.com"));

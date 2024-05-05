@@ -14,6 +14,10 @@ public class Load_User_Data : MonoBehaviour
     public GameObject Create_User_Canvas;
     public LocomotionManager locomotionManager;
     public ActivateTeleportationRay activateTeleportationRay;
+
+    public GameObject setInstructorButton;
+    public GameObject sendUserDataButton;
+
     private List<GameObject> createdButtonObjects = new List<GameObject>();
     private UserManager user;
     private Load_Current_Player_Data loadcurrentplayerData;
@@ -83,6 +87,19 @@ public class Load_User_Data : MonoBehaviour
         Create_User_Canvas.SetActive(false);
         CurrentPlayerText.text = playerName;
         user.currentUser = playerName;
+
+        if (playerName == "Admin")
+        {
+            //show button
+            setInstructorButton.SetActive(true);
+            sendUserDataButton.SetActive(true);
+        }
+        else
+        {
+            //hide button
+            setInstructorButton.SetActive(false);
+            sendUserDataButton.SetActive(false);
+        }
         
         Player_pref.CurrentPlayerName = playerName;
 

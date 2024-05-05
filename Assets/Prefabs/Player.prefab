@@ -299,6 +299,12 @@ MonoBehaviour:
   pictureScore: 0
   overallScore: 0
   evidenceTotal: 0
+  digitalScore: 0
+  digitalTotal: 0
+  documentaryScore: 0
+  documentaryTotal: 0
+  personalScore: 0
+  personalTotal: 0
   pictureTotal: 0
   overallTotal: 0
   average: 0
