@@ -144,8 +144,8 @@ public class ScoreTracker : MonoBehaviour
                 average = ((float)overallScore / (float)overallTotal) * 100f;
             else
                 average = 0f;
-            //if (warrantGrabbed == false)
-            //    average = average / 2;
+            if (warrantGrabbed == false)
+                average = average / 2;
             if (crimeCommitted)
                 average = 0f;
             if (average >= 90f)
