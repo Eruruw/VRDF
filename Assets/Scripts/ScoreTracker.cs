@@ -20,6 +20,7 @@ public class ScoreTracker : MonoBehaviour
     public int personalTotal;
     public int pictureTotal;
     public int overallTotal;
+    public int incorrectTotal = 0;
     public float average;
     public string grade = "F";
     public TextMeshProUGUI evidenceScoreText;
@@ -120,7 +121,11 @@ public class ScoreTracker : MonoBehaviour
                                     if (socket.ID.type == "Personal")
                                         personalScore++;
                                 }
+                                else
+                                    incorrectTotal++;
                             }
+                            else
+                                incorrectTotal++;
                         }
                     }
                 }
@@ -140,6 +145,7 @@ public class ScoreTracker : MonoBehaviour
                 }
             }
             overallScore = evidenceScore + pictureScore;
+            overallScore = overallScore - incorrectTotal;
             if (overallTotal > 0)
                 average = ((float)overallScore / (float)overallTotal) * 100f;
             else
@@ -162,19 +168,19 @@ public class ScoreTracker : MonoBehaviour
     public void UpdateStats()
     {
         if (digitalTotal != 0 && documentaryTotal != 0 && personalTotal != 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal != 0 && documentaryTotal != 0 && personalTotal == 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal != 0 && documentaryTotal == 0 && personalTotal == 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal != 0 && documentaryTotal == 0 && personalTotal != 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nPersonal: {personalScore} / {personalTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDigital: {digitalScore} / {digitalTotal}\nPersonal: {personalScore} / {personalTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal == 0 && documentaryTotal != 0 && personalTotal != 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nPersonal: {personalScore} / {personalTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal == 0 && documentaryTotal != 0 && personalTotal == 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nDocumentary: {documentaryScore} / {documentaryTotal}\nNon-Evidence: {incorrectTotal}";
         if (digitalTotal == 0 && documentaryTotal == 0 && personalTotal != 0)
-            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nPersonal: {personalScore} / {personalTotal}";
+            evidenceScoreText.text = $"Evidence Score: {evidenceScore} / {evidenceTotal}\nPersonal: {personalScore} / {personalTotal}\nNon-Evidence: {incorrectTotal}";
         pictureScoreText.text = $"Picture Score: {pictureScore} / {pictureTotal}";
         warrantScoreText.text = $"Picked up Warrant?: {warrantGrabbed}";
         overallScoreText.text = $"Overall Score: {overallScore} / {overallTotal}";
