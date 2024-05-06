@@ -6,6 +6,8 @@ using System.IO;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 public class Emailer : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class Emailer : MonoBehaviour
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus();
         playerprefsplus_player[] players;
         playerprefsplus.GetAllPlayers(out players);
-        string[] csvTitles = new string[] { "Name", "Number Of Office Attempts", "BestOfficeScore", "AverageOfficeScore", "Total Possible Evidence", "Total Gathered Evidence", "Password" };
+        string[] csvTitles = new string[] { "Name", "Number Of Office Attempts", "OfficeScores", "BestOfficeScore", "AverageOfficeScore", "Total Possible Evidence", "Total Gathered Evidence", "Password" };
         playerData.Add(csvTitles);
         foreach (playerprefsplus_player p in players)
         {
@@ -49,7 +51,25 @@ public class Emailer : MonoBehaviour
                 int totalEvidence = (int)playerprefs["TotalEvidence"];
                 int evidenceScore = (int)playerprefs["EvidenceScore"];
 
-                string[] tempPlayerData = new string[] {name, numOfOfficeRuns.ToString(), bestOfficeScore.ToString(), averageOfficeScore.ToString(), totalEvidence.ToString(), evidenceScore.ToString(), password};
+                string officeScores = "";
+                if (numOfOfficeRuns <= 1)
+                {
+                    float firstOfficeScore = (float)playerprefs["OfficeScores"];
+                    officeScores = firstOfficeScore.ToString();
+                }
+                else
+                {
+                    object[] tempOfficeScores = (object[])playerprefs["OfficeScores"];      //get array of all Office Scores
+                    float[] allOfficeScores = tempOfficeScores.OfType<float>().ToArray();    //convert to float array
+                    officeScores += "[";
+                    foreach (float val in allOfficeScores)
+                    {
+                        officeScores += val.ToString() + "|";
+                    }
+                    officeScores += "]";
+                }
+
+                string[] tempPlayerData = new string[] {name, numOfOfficeRuns.ToString(), officeScores, bestOfficeScore.ToString(), averageOfficeScore.ToString(), totalEvidence.ToString(), evidenceScore.ToString(), password};
                 playerData.Add(tempPlayerData);
             }
         }

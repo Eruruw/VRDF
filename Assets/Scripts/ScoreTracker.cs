@@ -240,6 +240,8 @@ public class ScoreTracker : MonoBehaviour
             }
             playerprefsplus.Save();
             playerprefsplus.Close();
+
+            user.ClearPlayerTempFiles();
         }
     }
 }

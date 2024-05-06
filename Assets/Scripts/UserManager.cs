@@ -38,6 +38,28 @@ public class UserManager : MonoBehaviour
         caseNumber = UnityEngine.Random.Range(1000, 10000);
     }
 
+    public void ClearPlayerTempFiles()
+    {
+        string tempDirectory = Application.temporaryCachePath + "/Captures/" + currentUser;
+        try
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(tempDirectory);
+            foreach (FileInfo file in directoryInfo.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in directoryInfo.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+            Debug.Log("Temporary files cleared.");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error clearing temporary files: " + e.Message);
+        }
+    }
+
     void ClearTempFiles()
     {
         string tempDirectory = Application.temporaryCachePath;
