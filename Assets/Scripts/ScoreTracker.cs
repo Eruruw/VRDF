@@ -228,10 +228,6 @@ public class ScoreTracker : MonoBehaviour
                     Array.Resize(ref allOfficeScores, allOfficeScores.Length + 1);
 
                     allOfficeScores[allOfficeScores.Length - 1] = average;                  //add current score to array
-                    foreach (float value in allOfficeScores)
-                    {
-                        Debug.Log($"Float value: {value}");
-                    }
                     playerprefsplus.Set("OfficeScores", allOfficeScores);                   //set the updated array
                     playerprefsplus.Set("BestOfficeScore", allOfficeScores.Max());          //set best score pref
                     playerprefsplus.Set("AverageOfficeScore", allOfficeScores.Average());   //set average score

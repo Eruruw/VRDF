@@ -70,7 +70,7 @@ public class Save_Player_Data : MonoBehaviour
             }
         }
 
-        if (mainMenuVolumeSlider != null)
+        if (pauseMenuVolumeSlider != null)
         {
             currentPlayerPrefs.Set("Volume", pauseMenuVolumeSlider.value);
         }

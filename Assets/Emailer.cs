@@ -7,7 +7,7 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using System.Threading.Tasks;
 using System.Linq;
-using System;
+using TMPro;
 
 public class Emailer : MonoBehaviour
 {
@@ -17,6 +17,9 @@ public class Emailer : MonoBehaviour
 
     private string adminEmail;
     private string userEmail;
+
+    public TextMeshProUGUI userSentEmailText;
+    public TextMeshProUGUI instructorSentEmailText;
     private void Start()
     {
         GameObject userMan = GameObject.Find("UserManager");
@@ -98,6 +101,7 @@ public class Emailer : MonoBehaviour
         playerprefsplus.Close();
 
         CreateCSV();
+        instructorSentEmailText.text = "Email Sent";
         Task.Run(() => SendAllUserData())
                     .ContinueWith(task =>
                     {
@@ -160,6 +164,7 @@ public class Emailer : MonoBehaviour
 
         PlayerPrefsPlus playerprefsplus = new PlayerPrefsPlus(user.currentUser);
         userEmail = (string)playerprefsplus.Get("Email");
+        userSentEmailText.text = "Email Sent";
         playerprefsplus.Close();
 
         Task.Run(() => SendUserData())
